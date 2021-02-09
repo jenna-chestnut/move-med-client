@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  flex: 1;
+}
+
+.item-double {
+  flex: 2;
+}
+
+input[type='text'], input[type='password'] {
+  padding: 5px;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #0ab2b8;
+}
+
+.loading img {
+  width: auto;
+}
+
+img {
+  width: 100%;
+}
+
+main .error {
+  padding: 40px;
+}
+
+main .error a {
+  display: block;
+}
+
+button {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: #008db1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button:hover {
+  border: none;
+}
+
+@media all and (min-width: 600px) {
+  .group {
+    flex-direction: row;
+  }
+}
