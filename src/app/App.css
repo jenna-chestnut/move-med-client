@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Helvetica, Arial, sans-serif
 }
 
 .group {
@@ -34,7 +35,8 @@ a:hover {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 main .error {
@@ -57,6 +59,7 @@ button {
 
 button:hover {
   border: none;
+  background-color: #00637c;
 }
 
 @media all and (min-width: 600px) {

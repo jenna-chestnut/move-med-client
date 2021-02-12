@@ -32,8 +32,8 @@ function LoginForm(props) {
        TokenService.saveAuthToken(res.authToken);
        const loggedIn = TokenService.parseAuthToken();
 
+       await setLoading(false);
        await dispatch(setUser(loggedIn));
-       setLoading(false);
        IdleService.registerIdleTimerResets()
        TokenService.queueCallbackBeforeExpiry(() => {
          EffectService.fetchRefreshToken()
@@ -41,7 +41,8 @@ function LoginForm(props) {
        props.onLoginSuccess();
     }
       catch(err) {
-        setError(err.message); 
+        setLoading(false);
+        setError(err.error); 
       }
   }
     return (

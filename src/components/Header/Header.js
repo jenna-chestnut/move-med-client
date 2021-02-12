@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearUser, selectUser } from '../../features/user/userSlice';
 import './Header.css';
 import IdleService from '../../Services/idle-service';
+import { clearExercises } from '../../features/exercises/exerciseSlice';
+import { clearUsers } from '../../features/admin/adminSlice';
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,6 +17,8 @@ function Header() {
     await TokenService.clearCallbackBeforeExpiry()
     await IdleService.unRegisterIdleResets()
     dispatch(clearUser());
+    dispatch(clearExercises());
+    dispatch(clearUsers());
     }
     catch (err) { console.log(err) }
   }

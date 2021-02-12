@@ -1,29 +1,28 @@
 import TokenService from '../Services/token-service';
 import IdleService from '../Services/idle-service';
-import AuthApiService from './auth-api-service';
+import AuthApiService from './auth-api-service'
 
-const EffectService = {
-  fetchRefreshToken: async() => {
-    try {
-      const res = await AuthApiService.refreshToken();
-          TokenService.saveAuthToken(res.authToken)
-          TokenService.queueCallbackBeforeExpiry(() => {
-            this()
-          })
-        }
-        catch(err) {
-          console.log(err)
-        }
-  },
-  appEffect() {
-    if (TokenService.hasAuthToken()) {
-      IdleService.registerIdleTimerResets()
-      TokenService.queueCallbackBeforeExpiry(() => {
-      this.fetchRefreshToken()
-      });
-    }
+const fetchRefreshToken = async() => {
+  try {
+    const res = await AuthApiService.refreshToken();
+    await TokenService.saveAuthToken(res.authToken);
   }
+      catch(err) {
+        console.log('err handle:', err)
+      }
+
+  TokenService.queueCallbackBeforeExpiry(() => {
+    fetchRefreshToken();
+  })
 }
 
+const appEffect = () => {
+    if (TokenService.hasAuthToken()) {
+      IdleService.registerIdleTimerResets()
+      TokenService.queueCallbackBeforeExpiry(fetchRefreshToken);
+    }
+  }
 
-export default EffectService;
+
+
+export default appEffect;

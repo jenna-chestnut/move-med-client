@@ -1,0 +1,17 @@
+.ClientDashView h2 {
+  font-size: 30px;
+  background-color: #dcecf5;
+  padding: 25px;
+}
+
+.ClientDashView hr {
+  width: 35%;
+}
+
+.ClientDashView .exercise-item h4 {
+  font-size: 25px;
+}
+
+.ClientDashView .exercise-name {
+  padding: 1px;
+}

@@ -3,11 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const exerciseSlice = createSlice({
   name: 'exercises',
   initialState: {
-    value: [],
+    value: []
   },
   reducers: {
     setExercises: (state, action) => {
-      state.value = action.payload;
+      const ex = action.payload;
+      state.value = ex;
     },
     clearExercises: state => {
       state.value = [];
@@ -17,6 +18,6 @@ export const exerciseSlice = createSlice({
 
 export const { setExercises, clearExercises } = exerciseSlice.actions;
 
-export const selectExercises = state => state.value;
+export const selectExercises = state => state.exercises.value;
 
 export default exerciseSlice.reducer;
