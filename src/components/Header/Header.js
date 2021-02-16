@@ -6,6 +6,7 @@ import './Header.css';
 import IdleService from '../../Services/idle-service';
 import { clearExercises } from '../../features/exercises/exerciseSlice';
 import { clearUsers } from '../../features/admin/adminSlice';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function Header() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function Header() {
     dispatch(clearExercises());
     dispatch(clearUsers());
     }
-    catch (err) { console.log(err) }
+    catch (err) { setError(err) }
   }
 
   const renderLogoutLink = () => {

@@ -9,6 +9,7 @@ import CommentsService from '../../Services/comments-api-service';
 import ClientsService from '../../Services/client-api-service';
 import EditExerciseForm from '../../components/EditExerciseForm/EditExerciseForm';
 import CommentsSection from '../../components/CommentsSection/CommentsSection';
+import { setError } from '../../features/appError/appErrorSlice';
 
 
 function ViewExercise() {
@@ -39,7 +40,7 @@ function ViewExercise() {
 
         await setExercise(ex);
         }
-       catch (err) { console.log(err) };
+       catch (err) { setError(err) };
       }
     }
     getData();

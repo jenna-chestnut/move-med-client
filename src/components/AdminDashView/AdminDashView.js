@@ -8,6 +8,7 @@ import AdminService from '../../Services/admin-api-service';
 import ExerciseItem from '../ExerciseItem/ExerciseItem';
 import UserItem from '../UserItem/UserItem';
 import { Link } from 'react-router-dom';
+import { setError } from '../../features/appError/appErrorSlice';
 
 
 function AdminDashView() {
@@ -22,7 +23,7 @@ function AdminDashView() {
         const u = await AdminService.getUsers();
         await dispatch(setUsers(u));
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
 
     getUsers();

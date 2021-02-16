@@ -4,6 +4,7 @@ import { selectExercises, setExercises } from '../../features/exercises/exercise
 import { useEffect, useState } from 'react';
 import ExercisesService from '../../Services/exercise-api-service';
 import { useHistory } from 'react-router-dom';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function ExerciseSelect(props) {
   const exercises = useSelector(selectExercises);
@@ -20,7 +21,7 @@ function ExerciseSelect(props) {
         
         await dispatch(setExercises(e));
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
     getClients();
   })

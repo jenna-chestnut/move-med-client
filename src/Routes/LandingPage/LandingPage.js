@@ -15,7 +15,6 @@ function LandingPage() {
   }
 
   const renderLoginForm = () => {
-    console.log(idle);
     if (user.user_name && !idle) {
       return <div className='item dash-button'>
               <button onClick={() => history.push('/dashboard')}>

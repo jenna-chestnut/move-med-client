@@ -28,7 +28,6 @@ function App() {
   const history = useHistory();
 
   const setI = async () => {
-    console.log('running this one - APP setIdle');
     await dispatch(setIdle());
     await history.push('/');
   }

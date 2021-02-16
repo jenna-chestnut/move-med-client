@@ -8,8 +8,10 @@ import IdleService from '../../Services/idle-service';
 import EffectService from '../../Services/app-effect-service';
 import { clearIdle } from '../../features/idle/idleSlice';
 
+
+
 function LoginForm(props) {
-  const [error, setError] = useState(null)
+  const [error, setErr] = useState(null)
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch();
 
@@ -17,7 +19,7 @@ function LoginForm(props) {
     ev.preventDefault();
     const { username, password } = ev.target;
 
-    setError(null);
+    setErr(null);
     setLoading(true);
 
     try {
@@ -44,7 +46,7 @@ function LoginForm(props) {
     }
       catch(err) {
         setLoading(false);
-        setError(err.error); 
+        setErr(err.error); 
       }
   }
     return (

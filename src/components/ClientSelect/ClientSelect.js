@@ -5,6 +5,7 @@ import { selectUsers, setUsers } from '../../features/admin/adminSlice';
 import { useEffect } from 'react';
 import ClientsService from '../../Services/client-api-service';
 import AdminService from '../../Services/admin-api-service';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function ClientSelect(props) {
   const clients = useSelector(selectUsers);
@@ -21,7 +22,7 @@ function ClientSelect(props) {
         
         await dispatch(setUsers(c));
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
     getClients();
   })

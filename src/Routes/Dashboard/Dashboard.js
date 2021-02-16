@@ -8,6 +8,7 @@ import ProviderDashView from '../../components/ProviderDashView/ProviderDashView
 import ClientDashView from '../../components/ClientDashView/ClientDashView';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function Dashboard() {
   const user = useSelector(selectUser);
@@ -21,7 +22,7 @@ function Dashboard() {
         const ex = await ExercisesService.getExercises();
         await dispatch(setExercises(ex));
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
     getExercises();
   })

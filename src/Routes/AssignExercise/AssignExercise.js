@@ -39,7 +39,7 @@ function AssignExercise() {
         await setEx(exercise);
         }
       }
-       catch (err) { console.log(err) };
+       catch (err) { setError(err) };
       }
     getData();
   })

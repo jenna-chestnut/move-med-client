@@ -7,6 +7,7 @@ import loadingImg from '../../images/Preloader_3.gif';
 import ClientsService from '../../Services/client-api-service';
 import ExerciseItem from '../ExerciseItem/ExerciseItem';
 import UserItem from '../UserItem/UserItem';
+import { setError } from '../../features/appError/appErrorSlice';
 
 
 function ProviderDashView() {
@@ -21,7 +22,7 @@ function ProviderDashView() {
         const c = await ClientsService.getClients();
         await dispatch(setUsers(c));
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
 
     getClients();

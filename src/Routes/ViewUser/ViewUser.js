@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import './ViewUser.css';
 import UserGoal from '../../components/UserGoal/UserGoal';
 import ExerciseSelect from '../../components/ExerciseSelect/ExerciseSelect';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function ViewUser() {
   const u = useSelector(selectUser); // to check permissions of logged in user
@@ -31,7 +32,7 @@ function ViewUser() {
           setGoal(u.clientGoal.goal_text);
           }
         }
-      } catch (err) { console.log(err) };
+      } catch (err) { setError(err) };
     }
     getUser();
   })

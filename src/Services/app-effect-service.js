@@ -8,7 +8,7 @@ const fetchRefreshToken = async() => {
     await TokenService.saveAuthToken(res.authToken);
   }
       catch(err) {
-        console.log('err handle:', err)
+        throw new Error(err.message ? err.message : err)
       }
 
   TokenService.queueCallbackBeforeExpiry(() => {
@@ -20,7 +20,6 @@ const logoutBecauseIdle = (func) => {
   TokenService.clearAuthToken();
   TokenService.clearCallbackBeforeExpiry();
   IdleService.unRegisterIdleResets();
-  console.log('running this function now')
   func();
 }
 

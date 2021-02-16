@@ -1,6 +1,7 @@
 import './UserGoal.css';
 import { useState } from 'react';
 import ClientsService from '../../Services/client-api-service';
+import { setError } from '../../features/appError/appErrorSlice';
 
 function UserGoal(props) {
   const [toEdit, editing] = useState(false);
@@ -13,11 +14,10 @@ function UserGoal(props) {
 
     try {
       const res = await ClientsService.updateClientGoal(newGoal, user_id);
-      console.log(res);
       await setGoal(res.goal_text);
       await editing(false);
     }
-    catch (err) { console.log(err) }
+    catch (err) { setError(err) }
   }
 
   const renderGoalView = () => {
