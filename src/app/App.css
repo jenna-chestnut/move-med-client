@@ -3,6 +3,10 @@
   font-family: Helvetica, Arial, sans-serif
 }
 
+main {
+  position: relative;
+}
+
 .group {
   display: flex;
   flex-direction: column;
@@ -60,6 +64,14 @@ button {
 button:hover {
   border: none;
   background-color: #00637c;
+}
+
+button.edit-button, .create-ex {
+  position: absolute;
+  margin: -15px 25px 0 0;
+  top: 0;
+  right: 0;
+  z-index: 100;
 }
 
 @media all and (min-width: 600px) {

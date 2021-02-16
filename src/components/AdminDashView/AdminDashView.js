@@ -7,6 +7,7 @@ import loadingImg from '../../images/Preloader_3.gif';
 import AdminService from '../../Services/admin-api-service';
 import ExerciseItem from '../ExerciseItem/ExerciseItem';
 import UserItem from '../UserItem/UserItem';
+import { Link } from 'react-router-dom';
 
 
 function AdminDashView() {
@@ -34,7 +35,7 @@ function AdminDashView() {
     ?
     users.map((u, idx) => {
       return u.is_provider 
-      ? <UserItem u={u}/> : '';
+      ? <UserItem key={`U${idx}`} u={u}/> : '';
     })
     : 
     stillLoading;
@@ -63,7 +64,8 @@ function AdminDashView() {
 
     return (
       <div className="AdminDashView">
-
+        <span className='admin-note'>(Admin)</span>
+        <Link to={'/create-account'} className='create-acccount'>Create New Account</Link>
         <div className='group'>
         <div className='item'>
         Providers: {renderProviders()}

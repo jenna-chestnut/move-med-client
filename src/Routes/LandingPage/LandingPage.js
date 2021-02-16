@@ -1,11 +1,13 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectIdle } from '../../features/idle/idleSlice';
 import './LandingPage.css';
 import { selectUser } from "../../features/user/userSlice";
 
 function LandingPage() {
   const user = useSelector(selectUser);
+  const idle = useSelector(selectIdle);
   let history = useHistory();
 
   const handleLoginSuccess = () => {
@@ -13,7 +15,8 @@ function LandingPage() {
   }
 
   const renderLoginForm = () => {
-    if (user.exp) {
+    console.log(idle);
+    if (user.user_name && !idle) {
       return <div className='item dash-button'>
               <button onClick={() => history.push('/dashboard')}>
                 Dashboard

@@ -6,6 +6,7 @@ import TokenService from '../../Services/token-service';
 import loadingImg from '../../images/Preloader_3.gif';
 import IdleService from '../../Services/idle-service';
 import EffectService from '../../Services/app-effect-service';
+import { clearIdle } from '../../features/idle/idleSlice';
 
 function LoginForm(props) {
   const [error, setError] = useState(null)
@@ -34,6 +35,7 @@ function LoginForm(props) {
 
        await setLoading(false);
        await dispatch(setUser(loggedIn));
+       await dispatch(clearIdle());
        IdleService.registerIdleTimerResets()
        TokenService.queueCallbackBeforeExpiry(() => {
          EffectService.fetchRefreshToken()

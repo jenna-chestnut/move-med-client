@@ -5,11 +5,15 @@ import ClientsService from '../../Services/client-api-service';
 import ExerciseItem from '../../components/ExerciseItem/ExerciseItem';
 import { selectUser } from '../../features/user/userSlice';
 import { useSelector } from 'react-redux';
+import './ViewUser.css';
+import UserGoal from '../../components/UserGoal/UserGoal';
+import ExerciseSelect from '../../components/ExerciseSelect/ExerciseSelect';
 
 function ViewUser() {
   const u = useSelector(selectUser); // to check permissions of logged in user
   const history = useHistory();
   const [user, setUser] = useState(null); // set get info of user to view
+  const [goal, setGoal] = useState(null);
 
   let { userType, userId } = useParams();
 
@@ -24,12 +28,17 @@ function ViewUser() {
         else {
           const u = await ClientsService.getClient(userId);
           setUser(u);
+          setGoal(u.clientGoal.goal_text);
           }
         }
       } catch (err) { console.log(err) };
     }
     getUser();
   })
+
+  const changeGoal = (newGoal) => {
+    setGoal(newGoal);
+  }
 
   const listClientExercises = () => {
     return user ?
@@ -43,22 +52,27 @@ function ViewUser() {
       return !user.is_admin && !user.is_provider
       ?
       <>
-      <p>{user.client.full_name}</p>
-      <p>{user.clientGoal.goal_text}</p>
+      <div className='item'>
+      <h2>{user.client.full_name}</h2>
+      <UserGoal g={goal} setGoal={changeGoal} user_id={userId}/>
+      <ExerciseSelect client_id={user.client.id}/>
+      </div>
+      <div className='item'>
       {listClientExercises()}
+      </div>
       </>
       :
-      <p>
-        <p>{user.full_name}</p>
+      <div className='item'>
+        <h2>{user.full_name}</h2>
         <p>Provider: {user.is_provider ? 'True' : 'False'}</p>
         <p>Admin: {user.is_admin ? 'True' : 'False'}</p>
-      </p>
+      </div>
       }
   }
 
   const editButton = () => {
     if (u.is_admin) {
-      return <button onClick={() => 
+      return <button className='edit-button' onClick={() => 
       {history.push(`/edit-user/${userId}`)}}>
               Edit User Info
             </button>

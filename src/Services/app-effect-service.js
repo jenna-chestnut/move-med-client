@@ -16,9 +16,18 @@ const fetchRefreshToken = async() => {
   })
 }
 
-const appEffect = () => {
+const logoutBecauseIdle = (func) => {
+  TokenService.clearAuthToken();
+  TokenService.clearCallbackBeforeExpiry();
+  IdleService.unRegisterIdleResets();
+  console.log('running this function now')
+  func();
+}
+
+const appEffect = (func) => {
     if (TokenService.hasAuthToken()) {
-      IdleService.registerIdleTimerResets()
+      IdleService.registerIdleTimerResets();
+      IdleService.setIdleCallback(() => logoutBecauseIdle(func))
       TokenService.queueCallbackBeforeExpiry(fetchRefreshToken);
     }
   }

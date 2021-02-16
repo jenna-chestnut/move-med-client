@@ -50,7 +50,7 @@ function ProviderDashView() {
   }
 
     return (
-      <div className="Provider-dash-group group">
+      <div className="ProviderDashView group">
         <div className='item'>Exercises: {renderExercises()}</div>
         <div className='item'>Clients: {renderClients()}</div>
       </div>

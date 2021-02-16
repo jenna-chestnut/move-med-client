@@ -1,36 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
-  name: 'user',
+export const errorSlice = createSlice({
+  name: 'error',
   initialState: {
-      id: '',
-      name: '',
-      user_name: '',
-      is_admin: false,
-      is_provider: false
+      message: null
   },
   reducers: {
-    setUser: (state, action) => {
-      const user = action.payload;
-
-      state.id = user.user_id;
-      state.name = user.name;
-      state.user_name = user.sub;
-      state.is_admin = user.is_admin;
-      state.is_provider = user.is_provider;
+    setError: (state, action) => {
+      const err = action.payload;
+      state.message = err;
       },
-    clearUser: state => {
-      state.id = '';
-      state.name = '';
-      state.user_name = '';
-      state.is_admin = false;
-      state.is_provider = false;
+    clearError: state => {
+      state.message = null;
     }
   }
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setError, clearError } = errorSlice.actions;
 
-export const selectUser = state => state.user;
+export const selectError = state => state.error.message;
 
-export default userSlice.reducer;
+export default errorSlice.reducer;

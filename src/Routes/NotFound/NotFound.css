@@ -1,0 +1,11 @@
+.dash-button {
+  min-height: 300px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.dash-button button {
+  align-self: center;
+  min-height: 50px;
+}

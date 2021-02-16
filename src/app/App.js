@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import { setUser, selectUser, clearUser } from '../features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
@@ -13,10 +13,25 @@ import appEffect from '../Services/app-effect-service';
 import PrivateRoute from '../Routes/PrivateRoute/PrivateRoute';
 import ViewUser from '../Routes/ViewUser/ViewUser';
 import ViewExercise from '../Routes/ViewExercise/ViewExercise';
+import EditUser from '../Routes/EditUser/EditUser';
+import AssignExercise from '../Routes/AssignExercise/AssignExercise';
+import NotFound from '../Routes/NotFound/NotFound';
+import { setIdle } from '../features/idle/idleSlice';
+import { setError, selectError } from '../features/appError/appErrorSlice';
+import CreateExercise from '../Routes/CreateExercise/CreateExercise';
+import CreateUser from '../Routes/CreateUser/CreateUser';
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const error = useSelector(selectError);
+  const history = useHistory();
+
+  const setI = async () => {
+    console.log('running this one - APP setIdle');
+    await dispatch(setIdle());
+    await history.push('/');
+  }
 
   const checkUser = async () => {
     try {
@@ -31,10 +46,10 @@ function App() {
       else if (loggedIn === user) return;
       else {
       dispatch(setUser(loggedIn));
-      await appEffect();
+      await appEffect(setI);
         }
       }
-    } catch(err) { console.log(err) };
+    } catch(err) { dispatch(setError(err.message)) };
   }
 
   useEffect(() => {
@@ -50,6 +65,8 @@ function App() {
     <div className="App">
       <Header/>
 
+      { error && <div className='appError'><p>{ error }</p></div> }
+
       <main>
       <Switch>
         <Route exact path='/' component={LandingPage}/>
@@ -57,18 +74,19 @@ function App() {
         <PrivateRoute path='/view/exercise/:userType/:exerciseId' component={ViewExercise}/>
         <PrivateRoute path='/view/:userType/:userId' 
         restricted={true} component={ViewUser}/>
-      
+        <PrivateRoute path='/edit-user/:userId' 
+        admin={true} component={EditUser}/>
+        <PrivateRoute path='/assign-exercise/:exerciseId/:clientId' 
+        restricted={true} component={AssignExercise}/>
+        <PrivateRoute path='/create-exercise' 
+        restricted={true} component={CreateExercise}/>
+        <PrivateRoute path='/create-account' 
+        admin={true} component={CreateUser}/>
 
+        <Route component={NotFound}/>
       {
-        // landing page - public 
-        // (conditionally render login form on landing page! vs button to dashboard (if logged in))
         // 'about' page (w/ contact me form) - public
-        // dashboard
-        // view single exercise
-        // view client
         // create account
-        // create exercise
-        // assign exercise
       }
       </Switch>
       </main>

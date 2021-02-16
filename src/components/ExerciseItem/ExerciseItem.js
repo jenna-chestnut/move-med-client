@@ -2,19 +2,26 @@ import { Link } from 'react-router-dom';
 import './ExerciseItem.css';
 import Fade from 'react-reveal/Fade';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/user/userSlice';
+
 
 function ExerciseItem(props) {
   const [details, showExtraDetails] = useState(false);
   const { ex } = props;
+  const u = useSelector(selectUser);
 
   const renderDetails = () => {
     const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
 
     const exItem = <Fade>
       { props.client 
-        ? <p>Frequency: {ex.frequency}x every {ex.duration}
-        {' | '}<Link to={`/view/exercise/client/${ex.id}`}> Open</Link> </p>
-        : <><Link to={`/view/exercise/admin/${ex.id}`}> Open</Link> | <Link to={`/assign/exercise/${ex.id}`}> Assign</Link></> }
+        ? 
+        <p>Frequency: {ex.frequency}x every {ex.duration}
+        {' | '}<Link to={`/view/exercise/client/${!u.is_admin && !u.is_provider ? ex.exercise_id : ex.id}`}> Open</Link> </p>
+        : 
+        <><Link to={`/view/exercise/admin/${ex.id}`}> Open</Link> | <Link to={`/assign-exercise/${ex.id}/unset`}> Assign</Link></> 
+      }
     <div className='group'>
     <div className='item'>
     <img src={ex.imgurl} alt='exercise example' /></div>

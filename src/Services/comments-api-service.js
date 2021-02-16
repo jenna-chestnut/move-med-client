@@ -10,9 +10,9 @@ const CommentsService = {
       }
     })
   },
-  createComment(newComment) {
+  createComment(newComment, exc_id) {
     newComment = JSON.stringify(newComment);
-    return mutableFetch('comments', newComment.exercise_id, {
+    return mutableFetch('comments', exc_id, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -20,6 +20,26 @@ const CommentsService = {
       },
       body: newComment
     })
+  },
+  updateComment(newData, exc_id) {
+    newData = JSON.stringify(newData);
+    return mutableFetch('comments', exc_id, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body: newData
+    })
+  },
+  deleteComment(comment_id) {
+    return mutableFetch('comments', comment_id, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
+      }
+    }, true)
   }
 }
 

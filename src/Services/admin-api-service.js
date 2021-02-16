@@ -17,6 +17,17 @@ const AdminService = {
         'authorization': `Bearer ${TokenService.getAuthToken()}`
       }
     })
+  },
+  updateUserData(newData, user_id) {
+    newData = JSON.stringify(newData);
+    return mutableFetch('users', user_id, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body: newData
+    })
   }
 }
 

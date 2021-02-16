@@ -26,6 +26,17 @@ const ExercisesService = {
       },
       body: newExercise
     })
+  },
+  updateExercise(newData, exc_id) {
+    newData = JSON.stringify(newData);
+    return mutableFetch('exercises', exc_id, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body: newData
+    })
   }
 }
 

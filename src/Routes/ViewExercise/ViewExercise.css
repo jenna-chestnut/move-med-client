@@ -1,0 +1,15 @@
+.ViewExercise {
+  margin-top: 45px;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.comments ul {
+  padding-left: 0;
+}
+
+.comments li {
+  list-style-type: none;
+}

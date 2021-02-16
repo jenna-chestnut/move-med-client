@@ -40,16 +40,6 @@ function Header() {
     )
   }
 
-  // const renderLoginLink = () => {
-  //   return (
-  //     <nav>
-  //       <Link to='/login'>Login</Link>
-  //       {' '}
-  //       <Link to='/register'>Sign up</Link>
-  //     </nav>
-  //   )
-  // }
-
     return (
       <header className="h-group">
         <div className='item'>
@@ -61,9 +51,7 @@ function Header() {
           <p>Your movement medicine.</p>
         </div>
 
-        { TokenService.hasAuthToken()
-          ? renderLogoutLink()
-          : '' }
+        { user.user_name && renderLogoutLink() }
       </header>
     );
 }

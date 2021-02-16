@@ -1,6 +1,6 @@
 import config from '../config'
 
-const mutableFetch = (endpoint, params, method) => {
+const mutableFetch = (endpoint, params, method, deleting) => {
   params = params ? params : '';
   method = method ? method : { method: 'GET' }
 
@@ -8,7 +8,7 @@ const mutableFetch = (endpoint, params, method) => {
       .then(res =>
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
+          : deleting ? '' : res.json()
       )
 }
 
