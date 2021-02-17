@@ -19,11 +19,12 @@ function ClientDashView() {
   
     return (
       <div className='ClientDashView'>
-        <hr/>
-        <h3>Goal: { ex.goal ? ex.goal.goal_text : 'Loading...' }
-        </h3>
+        <span className='clientdash-goal'>
+          Goal: { ex.goal ? ex.goal.goal_text : 'Loading...' }
+        </span>
         <div className='client-exercises'>
-        <h2>Exercises</h2> {renderExercises()}
+        <h2 className='exercises-header'>Your Exercises</h2> 
+        {renderExercises()}
         </div>
       </div>
     );

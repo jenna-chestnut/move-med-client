@@ -1,15 +1,19 @@
 .clients-header {
   color: white;
-  background-color: rgb(0, 124, 114);
+  background-color: #007c72;
 }
 
 .exercises-header, .clients-header {
-  margin: 0;
+  margin: 0 0 15px 0;
   padding: 15px;
 }
 
 .exercises-header {
   background-color: #17b7d370;
+}
+
+.dash-item {
+  background-color: #86878a13;
 }
 
 @media all and (min-width: 600px) {
@@ -19,7 +23,6 @@
   
   .dash-item {
     margin: 15px;
-    background-color: rgba(134, 135, 138, 0.075);
     border-radius: 15px;
   }
 

@@ -21,12 +21,13 @@ function ExerciseItem(props) {
 
       { props.client 
         ? 
-        <p>Frequency: {ex.frequency}x every {ex.duration}
-        {' | '}<Link to={`/view/exercise/client/${!u.is_admin && !u.is_provider ? ex.exercise_id : ex.id}`}> Open</Link> </p>
+        <p><b>Frequency: {ex.frequency}x every {ex.duration}</b> 
+        {' | '}<Link to={`/view/exercise/client/${
+           !u.is_admin && !u.is_provider ? ex.exercise_id : ex.id}`}> Open</Link> </p>
         : 
         <><Link to={`/view/exercise/admin/${ex.id}`}> Open</Link> | <Link to={`/assign-exercise/${ex.id}/unset`}> Assign</Link></> 
       }
-      
+
     <div className='group'>
     <div className='item'>
     <img src={ex.imgurl} alt='exercise example' /></div>
@@ -50,8 +51,7 @@ function ExerciseItem(props) {
           <h4>{ex.exercise_name}</h4>
         </div></Fade>
 
-        { details &&
-         <><hr/>{renderDetails()}</>}
+        { details && <><hr/>{renderDetails()}</> }
          
       </div>
     );

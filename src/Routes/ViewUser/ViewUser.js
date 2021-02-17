@@ -60,7 +60,7 @@ function ViewUser() {
       </div>
 
       <div className='item'>
-      <h3>Client Exercises</h3>
+      <h3 className='exercises-header'>Client Exercises</h3>
         {listClientExercises()}
       </div>
       </>

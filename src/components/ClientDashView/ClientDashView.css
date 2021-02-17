@@ -1,13 +1,17 @@
-.ClientDashView h2 {
-  font-size: 30px;
-  background-color: #dcecf5;
-  padding: 25px;
+.clientdash-goal {
+  display: block;
+  background-color: rgb(255, 100, 43);
+  padding: 5px;
+  margin: 0;
 }
 
-.ClientDashView hr {
-  width: 35%;
+@media all and (min-width: 600px) {
+  .clientdash-goal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: -20px 25px 0 0;
+    padding: 15px 35px;
+    background-color: rgba(101, 185, 84, 0.63);
 }
-
-.ClientDashView .exercise-item h4 {
-  font-size: 25px;
 }
