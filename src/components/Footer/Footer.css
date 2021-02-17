@@ -1,0 +1,9 @@
+footer p, footer p a {
+  color: white;
+  background-color: #004449;
+  margin: 0;
+}
+
+footer p {
+  padding: 42px;
+}

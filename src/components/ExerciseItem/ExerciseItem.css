@@ -1,19 +1,26 @@
-.exercise-name {
-  font-size: 25px;
+.exercise-item {
+  position: relative;
 }
 
 .details {
   margin-bottom: 75px;
-  margin-top: 45px;
-  padding-top: 1px;
+  padding-top: 15px;
+}
+
+.close-ex {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 15px 15px;
+}
+
+.exercise-item h4 {
+  margin: 0;
+  padding: 10px;
 }
 
 .exercise-item:hover {
   background-color: rgb(226, 226, 226);
-}
-
-.exercise-item button {
-  margin: 25px auto 30px auto;
 }
 
 .exercise-item hr {

@@ -7,7 +7,6 @@ import ExercisesService from '../../Services/exercise-api-service';
 import ProviderDashView from '../../components/ProviderDashView/ProviderDashView';
 import ClientDashView from '../../components/ClientDashView/ClientDashView';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
 import { setError } from '../../features/appError/appErrorSlice';
 
 function Dashboard() {
@@ -37,17 +36,12 @@ function Dashboard() {
     else return <ClientDashView/>
   }
 
-  const createExerciseButton = (
-  <Link to='/create-exercise' className='create-ex'>Create Exercise</Link>
-  )
-
   return (
     <div className="dashboard">
       <div className='dash-name'>
         <h2>Hello, {user.name.split(' ')[0]}!</h2>
       </div>
-       {(user.is_admin || user.is_provider) && createExerciseButton}
-       { userDash() }
+       <div className='dash-view'>{userDash()}</div>
     </div>
   );
 }

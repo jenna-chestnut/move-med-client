@@ -49,17 +49,19 @@ function ViewUser() {
   }
 
   const handleView = () => {
-      if (user) {
       return !user.is_admin && !user.is_provider
       ?
       <>
+
       <div className='item'>
       <h2>{user.client.full_name}</h2>
       <UserGoal g={goal} setGoal={changeGoal} user_id={userId}/>
       <ExerciseSelect client_id={user.client.id}/>
       </div>
+
       <div className='item'>
-      {listClientExercises()}
+      <h3>Client Exercises</h3>
+        {listClientExercises()}
       </div>
       </>
       :
@@ -68,7 +70,6 @@ function ViewUser() {
         <p>Provider: {user.is_provider ? 'True' : 'False'}</p>
         <p>Admin: {user.is_admin ? 'True' : 'False'}</p>
       </div>
-      }
   }
 
   const editButton = () => {

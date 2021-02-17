@@ -1,10 +1,12 @@
 .App {
   text-align: center;
-  font-family: Helvetica, Arial, sans-serif
+  font-family: Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
 main {
   position: relative;
+  min-height: 62vh;
 }
 
 .group {
@@ -31,7 +33,7 @@ a {
 }
 
 a:hover {
-  color: #0ab2b8;
+  color: #17b7d3;
 }
 
 .loading img {
@@ -55,15 +57,21 @@ button {
   color: white;
   font-weight: bold;
   letter-spacing: 2px;
-  background-color: #008db1;
+  background-color: #006983;
   border: none;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 button:hover {
   border: none;
-  background-color: #00637c;
+  background-color: #054d5f;
+}
+
+button:active, button:focus {
+  border: 2px;
+  color: #054d5f;
+  background-color: white;
 }
 
 button.edit-button, .create-ex {

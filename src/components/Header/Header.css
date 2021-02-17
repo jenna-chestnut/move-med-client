@@ -1,13 +1,14 @@
 header {
   position: relative;
-  background-color: #d2e6e3;
+  background-color: #004449;
 }
 
 header h1 a, header h1 a:hover {
   transition: none;
 }
 
-header h1 {
+header h1, header h1 a {
+  color: white;
   align-self: flex-start;
   text-align: left;
 }
@@ -27,22 +28,32 @@ h1 {
   font-size: 55px;
   letter-spacing: 2px;
   margin-bottom: auto;
-  margin-top: 45px;
+  margin-top: 55px;
 }
 
 nav, .logged-in-nav {
+  width: 350px;
   margin: auto;
   position: absolute;
   right: 0px;
   text-align: right;
-  padding-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #00421e;
+}
+
+.reg-nav {
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+  background-color:  #00421e;
 }
 
 .logged-in-nav span {
   display: block;
   margin: 0px;
   margin-right: 10px;
-  color: rgb(74, 86, 97);
+  color: #e6f6ff91;
   font-style: italic;
 }
 
@@ -50,17 +61,17 @@ nav, .logged-in-nav {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
 .h-group p {
   margin-top: -10px;
   text-align: left;
   padding-left: 20px;
+  color: #e6f6ffd0;
 }
 
 nav a {
-  color: black;
+  color: white;
   margin: 10px 20px 0 0;
   text-decoration: none;
   vertical-align: middle;
@@ -78,12 +89,22 @@ nav a {
       margin-top: 25px;
   }
   nav {
-      padding-top: 5px;
-      position: relative;
+    margin-top: 10px;
   }
-  .logged-in-nav {
+  nav, .logged-in-nav, .reg-nav {
+    background-color: transparent;
+  }
+  .logged-in-nav, .reg-nav {
     align-content: center;
     margin-right: 25px;
+    padding: 20px;
+    width: 355px;
+  }
+  .reg-nav {
+    padding-top: 35px;
+    font-size: 25px;
+    width: auto;
+    background-color: transparent;
   }
   header {
       margin-top: 0;

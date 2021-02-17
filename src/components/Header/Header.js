@@ -24,22 +24,43 @@ function Header() {
     catch (err) { setError(err) }
   }
 
-  const renderLogoutLink = () => {
+  const renderLinks = () => {
     return (
       <div className='logged-in-nav'>
         <span>
-          {user.full_name}
+          {user.name}
         </span>
         <nav>
+
+          { user.is_admin && 
+          <Link
+            to='/create-account'>
+            Create Account
+          </Link> }
+
+          { (user.is_admin || user.is_provider) && 
+          <Link
+            to='/create-exercise'>
+            Create Exercise
+          </Link> }
+
           <Link
             onClick={handleLogoutClick}
             to='/'>
             Logout
           </Link>
+
         </nav>
       </div>
     )
   }
+
+  const regularNav = 
+    <nav className='reg-nav'>
+      <Link to='/about'>
+        About
+      </Link>
+    </nav>
 
     return (
       <header className="h-group">
@@ -52,7 +73,8 @@ function Header() {
           <p>Your movement medicine.</p>
         </div>
 
-        { user.user_name && renderLogoutLink() }
+        { user.user_name ? renderLinks() : regularNav}
+
       </header>
     );
 }

@@ -7,7 +7,6 @@ import loadingImg from '../../images/Preloader_3.gif';
 import AdminService from '../../Services/admin-api-service';
 import ExerciseItem from '../ExerciseItem/ExerciseItem';
 import UserItem from '../UserItem/UserItem';
-import { Link } from 'react-router-dom';
 import { setError } from '../../features/appError/appErrorSlice';
 
 
@@ -66,19 +65,21 @@ function AdminDashView() {
     return (
       <div className="AdminDashView">
         <span className='admin-note'>(Admin)</span>
-        <Link to={'/create-account'} className='create-acccount'>Create New Account</Link>
         <div className='group'>
-        <div className='item'>
-        Providers: {renderProviders()}
+        <div className='item dash-item'>
+        <h3 className='providers-header'>Providers</h3> 
+        {renderProviders()}
         </div>
 
-        <div className='item'>
-        Clients: {renderClients()}
+        <div className='item dash-item'>
+        <h3 className='clients-header'>Clients</h3> 
+        {renderClients()}
         </div>
         </div>
 
         <div className='admin-exercises'>
-          Exercises: {renderExercises()}
+        <h3 className='exercises-header'>Exercises</h3> 
+        {renderExercises()}
         </div>
       </div>
     );

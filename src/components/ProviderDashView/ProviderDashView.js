@@ -52,8 +52,14 @@ function ProviderDashView() {
 
     return (
       <div className="ProviderDashView group">
-        <div className='item'>Exercises: {renderExercises()}</div>
-        <div className='item'>Clients: {renderClients()}</div>
+        <div className='item'>
+          <h3 className='exercise-header'>Exercises</h3> 
+          {renderExercises()}
+          </div>
+        <div className='item'>
+          <h3 className='clients-header'>Clients</h3>
+          {renderClients()}
+          </div>
       </div>
     );
 }

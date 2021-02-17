@@ -14,33 +14,28 @@ function LandingPage() {
     history.push('/dashboard')
   }
 
-  const renderLoginForm = () => {
-    if (user.user_name && !idle) {
-      return <div className='item dash-button'>
-              <button onClick={() => history.push('/dashboard')}>
-                Dashboard
-              </button></div>
-    }
-    else return <div className='item login'>
-      <LoginForm onLoginSuccess={handleLoginSuccess}/>
-            </div>
-  }
-
   return (
-    <div className="landing-page group">     
+    <div className="LandingPage group">     
 
-        {renderLoginForm()}
+      <div className='item login'>
+        <LoginForm onLoginSuccess={handleLoginSuccess}/>
+      </div>
 
-      <div className='item'>
-      <div className='item'>
-        <h2>CLIENTS</h2>
-        <p>Continue your care seamlessly.</p>
+      <div className='item landing-page-descs-c'>
+      <div className='item group l-p-d lp-clients'>
+        <h2 className='small-item'>CLIENTS</h2>
+        <div className='item-double group'>
+        <p><i>Continue your care seamlessly.</i></p>
         <p>Access your home exercise program anywhere!</p>
+        </div>
        </div>
-       <div className='item'>
-       <h2>PROVIDERS</h2>
-        <p>Keep your clients up to date.</p>
+
+       <div className='item group l-p-d lp-providers'>
+       <h2 className='small-item'>PROVIDERS</h2>
+       <div className='item-double group'>
+        <p><i>Keep your clients up to date.</i></p>
         <p>View their feedback as they progress!</p>
+        </div>
        </div>
       </div>
     </div>

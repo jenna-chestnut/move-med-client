@@ -7,7 +7,7 @@ import loadingImg from '../../images/Preloader_3.gif';
 import IdleService from '../../Services/idle-service';
 import EffectService from '../../Services/app-effect-service';
 import { clearIdle } from '../../features/idle/idleSlice';
-
+import './LoginForm.css';
 
 
 function LoginForm(props) {
@@ -84,7 +84,7 @@ function LoginForm(props) {
           />
         </div>
         <button type='submit'>
-          Login
+          Log In
         </button>
       </form>
     )

@@ -20,6 +20,7 @@ import { setIdle } from '../features/idle/idleSlice';
 import { setError, selectError } from '../features/appError/appErrorSlice';
 import CreateExercise from '../Routes/CreateExercise/CreateExercise';
 import CreateUser from '../Routes/CreateUser/CreateUser';
+import PublicOnlyRoute from '../Routes/PublicOnlyRoute/PublicOnlyRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
   const history = useHistory();
 
   const setI = async () => {
+    await dispatch(clearUser());
     await dispatch(setIdle());
     await history.push('/');
   }
@@ -68,25 +70,24 @@ function App() {
 
       <main>
       <Switch>
-        <Route exact path='/' component={LandingPage}/>
+        <PublicOnlyRoute exact path='/' component={LandingPage}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
-        <PrivateRoute path='/view/exercise/:userType/:exerciseId' component={ViewExercise}/>
+        <PrivateRoute path='/view/exercise/:userType/:exerciseId' 
+        component={ViewExercise}/>
+        
         <PrivateRoute path='/view/:userType/:userId' 
         restricted={true} component={ViewUser}/>
-        <PrivateRoute path='/edit-user/:userId' 
-        admin={true} component={EditUser}/>
         <PrivateRoute path='/assign-exercise/:exerciseId/:clientId' 
         restricted={true} component={AssignExercise}/>
         <PrivateRoute path='/create-exercise' 
         restricted={true} component={CreateExercise}/>
+
+        <PrivateRoute path='/edit-user/:userId' 
+        admin={true} component={EditUser}/>
         <PrivateRoute path='/create-account' 
         admin={true} component={CreateUser}/>
 
         <Route component={NotFound}/>
-      {
-        // 'about' page (w/ contact me form) - public
-        // create account
-      }
       </Switch>
       </main>
 

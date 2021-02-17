@@ -15,6 +15,10 @@ function ExerciseItem(props) {
     const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
 
     const exItem = <Fade>
+
+      <button className='close-ex' 
+      onClick={() => showExtraDetails(false)}> Close</button>
+
       { props.client 
         ? 
         <p>Frequency: {ex.frequency}x every {ex.duration}
@@ -22,6 +26,7 @@ function ExerciseItem(props) {
         : 
         <><Link to={`/view/exercise/admin/${ex.id}`}> Open</Link> | <Link to={`/assign-exercise/${ex.id}/unset`}> Assign</Link></> 
       }
+      
     <div className='group'>
     <div className='item'>
     <img src={ex.imgurl} alt='exercise example' /></div>
@@ -39,12 +44,15 @@ function ExerciseItem(props) {
 
     return (
       <div className={itemClass}>
-        <Fade><div className='exercise-name' onClick={() => showExtraDetails(true)}>
+
+        <Fade><div className='exercise-name' 
+        onClick={() => showExtraDetails(true)}>
           <h4>{ex.exercise_name}</h4>
         </div></Fade>
+
         { details &&
-         <><hr/>{renderDetails()}
-         <button onClick={() => showExtraDetails(false)}> Close</button></> }
+         <><hr/>{renderDetails()}</>}
+         
       </div>
     );
 }

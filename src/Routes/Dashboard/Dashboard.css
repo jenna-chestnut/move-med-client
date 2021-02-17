@@ -1,3 +1,31 @@
-.create-ex {
-  margin-top: 5px;
+.clients-header {
+  color: white;
+  background-color: rgb(0, 124, 114);
+}
+
+.exercises-header, .clients-header {
+  margin: 0;
+  padding: 15px;
+}
+
+.exercises-header {
+  background-color: #17b7d370;
+}
+
+@media all and (min-width: 600px) {
+  .dash-view {
+    margin-top: 25px;
+  }
+  
+  .dash-item {
+    margin: 15px;
+    background-color: rgba(134, 135, 138, 0.075);
+    border-radius: 15px;
+  }
+
+  .dash-name {
+    text-align: left;
+    margin-left: 35px;
+    margin-top: 15px;
+  }
 }
