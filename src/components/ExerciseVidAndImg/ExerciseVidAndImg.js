@@ -5,12 +5,12 @@ import { selectUser } from '../../features/user/userSlice';
 
 
 function ExerciseVidAndImg(props) {
-  const { ex, hide, list, clientEx } = props;
+  const { ex = {}, hide, list, clientEx } = props;
   const u = useSelector(selectUser);
 
     const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
 
-    const video = <iframe className='exc-vid' width="95%" title={ex.exercise_name} height="315" src={videoURL} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    const video = <iframe className='exc-vid' width="95%" title={ex.exercise_name} height="315" src={videoURL} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
     const details = () => {
       if (list) {

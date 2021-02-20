@@ -1,0 +1,22 @@
+import smokeTest from '../MoveMed.fixtures';
+import ViewUser from './ViewUser/ViewUser';
+import About from './About/About';
+import CreateExercise from './CreateExercise/CreateExercise';
+import CreateUser from './CreateUser/CreateUser';
+import Dashboard from './Dashboard/Dashboard';
+import EditUser from './EditUser/EditUser';
+import LandingPage from './LandingPage/LandingPage';
+import NotFound from './NotFound/NotFound';
+import ViewExercise from './ViewExercise/ViewExercise';
+import AssignExercise from './AssignExercise/AssignExercise';
+
+smokeTest('About', <About/>);
+smokeTest('AssignExercise', <AssignExercise/>);
+smokeTest('CreateExercise', <CreateExercise/>);
+smokeTest('CreateUser', <CreateUser/>);
+smokeTest('Dashboard', <Dashboard/>);
+smokeTest('EditUser', <EditUser/>);
+smokeTest('LandingPage', <LandingPage/>);
+smokeTest('NotFound', <NotFound/>);
+smokeTest('ViewExercise', <ViewExercise/>);
+smokeTest('ViewUser', <ViewUser/>);

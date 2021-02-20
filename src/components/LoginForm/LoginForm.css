@@ -1,5 +1,17 @@
 .LoginForm button {
   font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.LoginForm button.demo {
+  color: white;
+  transition: 1s;
+  font-weight: lighter;
+  font-size: 15px;
+  background-color: transparent;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 form.LoginForm, .loading {

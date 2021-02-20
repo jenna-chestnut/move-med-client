@@ -33,7 +33,7 @@ a {
   transition: 1s;
 }
 
-a:hover {
+a:hover, .LoginForm button.demo:hover {
   color: #17b7d3;
   letter-spacing: 2px;
   transition: 1s;

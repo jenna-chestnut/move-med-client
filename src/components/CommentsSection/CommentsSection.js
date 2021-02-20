@@ -50,10 +50,12 @@ function CommentsSection(props) {
   }
 
   const listComments = () => {
-    return comments.map((el, idx) => {
+    return comments 
+    ?
+    comments.map((el, idx) => {
       return <Comment key={`C${idx}`}
       comment={el} submitComment={submitComment} deleteComment={deleteComment}/>
-    })
+    }) : ''
   }
 
   return (

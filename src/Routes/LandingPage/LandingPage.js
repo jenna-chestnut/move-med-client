@@ -1,11 +1,22 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
+import { useDispatch } from "react-redux";
+import IdleService from "../../Services/idle-service";
+import TokenService from "../../Services/token-service";
+import { clearIdle } from "../../features/idle/idleSlice";
+import EffectService from '../../Services/app-effect-service';
 
 function LandingPage() {
+  let dispatch = useDispatch();
   let history = useHistory();
 
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = async () => {
+    await dispatch (clearIdle());
+    await IdleService.registerIdleTimerResets()
+    await TokenService.queueCallbackBeforeExpiry(() => {
+      EffectService.fetchRefreshToken();
+    })
     history.push('/dashboard')
   }
 

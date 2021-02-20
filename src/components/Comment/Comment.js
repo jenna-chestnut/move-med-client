@@ -7,7 +7,7 @@ import './Comment.css';
 
 function Comment(props) {
   const u = useSelector(selectUser);
-  const { comment, submitComment, deleteComment } = props;
+  const { comment = {}, submitComment, deleteComment } = props;
   const [editing, setEditing] = useState(false);
 
   const closeForm = () => {

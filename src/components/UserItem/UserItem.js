@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './UserItem.css';
 
 function UserItem(props) {
-  const { u } = props;
+  const { u = {} } = props;
 
   const link = !u.is_admin && !u.is_provider
   ? `/view/clients/${u.id}` : `/view/users/${u.id}`;

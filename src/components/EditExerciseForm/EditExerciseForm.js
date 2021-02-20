@@ -13,7 +13,7 @@ function EditExerciseForm(props) {
   const [frequency, setFreq] = useState(null);
   const [duration, setDuration] = useState(null);
   const [add_note, setNote] = useState(null); 
-  const { e, userType, setExc, setEdit } = props;
+  const { e = {}, userType, setExc, setEdit } = props;
 
   useEffect(() => {
     if (!imgurl && !add_note) {

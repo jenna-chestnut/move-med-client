@@ -6,7 +6,7 @@ import ExerciseVidAndImg from '../ExerciseVidAndImg/ExerciseVidAndImg';
 
 function ExerciseItem(props) {
   const [details, showExtraDetails] = useState(false);
-  const { ex, clientEx, list } = props;
+  const { ex = {}, clientEx, list } = props;
 
   const itemClass = details 
   ? 'exercise-item details' : 'exercise-item';

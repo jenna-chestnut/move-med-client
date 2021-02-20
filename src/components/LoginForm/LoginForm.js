@@ -4,10 +4,8 @@ import AuthApiService from '../../Services/auth-api-service'
 import { setUser } from '../../features/user/userSlice';
 import TokenService from '../../Services/token-service';
 import loadingImg from '../../images/Preloader_3.gif';
-import IdleService from '../../Services/idle-service';
-import EffectService from '../../Services/app-effect-service';
-import { clearIdle } from '../../features/idle/idleSlice';
 import './LoginForm.css';
+import demoLogin from '../../Services/demo-login-service';
 
 
 function LoginForm(props) {
@@ -37,11 +35,6 @@ function LoginForm(props) {
 
        await setLoading(false);
        await dispatch(setUser(loggedIn));
-       await dispatch(clearIdle());
-       IdleService.registerIdleTimerResets()
-       TokenService.queueCallbackBeforeExpiry(() => {
-         EffectService.fetchRefreshToken()
-       })
        props.onLoginSuccess();
     }
       catch(err) {
@@ -49,11 +42,32 @@ function LoginForm(props) {
         setErr(err.error); 
       }
   }
+
+
+  const handleDemo = async (ev, key) => {
+    ev.preventDefault();
+    setErr(null);
+    setLoading(true);
+
+    try {
+      const loggedIn = await demoLogin(key);
+       await setLoading(false);
+       await dispatch(setUser(loggedIn));
+       props.onLoginSuccess();
+    }
+      catch(err) {
+        setLoading(false);
+        setErr(err.error); 
+      }
+  }
+
+
     return (
       loading 
       ?
       <div className='loading'><h3>L o a d i n g . . .</h3><img src={loadingImg} alt='loading'/></div>
       :
+      <>
       <form
         className='LoginForm'
         onSubmit={handleSubmit}
@@ -86,7 +100,11 @@ function LoginForm(props) {
         <button type='submit'>
           Log In
         </button>
+        <br/>
+        <button className='demo' onClick={(e) => handleDemo(e, 'client')}>Client Demo</button>
+        <button className='demo' onClick={(e) => handleDemo(e, 'provider')}>Provider Demo</button>
       </form>
+      </>
     )
 }
 
