@@ -6,10 +6,50 @@
   border-radius: 10px;
 }
 
+.tool-tip-img, .tool-tip-vid {
+  position: relative;
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  color: slategrey;
+}
+
+div.tt .tool-tip-img:hover .img-tt, div.tt .tool-tip-vid:hover .vid-tt{
+  visibility: visible;
+  vertical-align: middle;
+  padding: 10px;
+  height: 65px;
+  width: 200px;
+  top: 102%;
+  left: -100%;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 1px solid slategrey;
+  border-radius: 10px;
+}
+
+.vid-tt, .img-tt {
+  position: absolute;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+.tt a, .tt a:hover {
+  transition: none;
+  display: block;
+  letter-spacing: 0px;
+  margin: 5px auto;
+}
+
 .CreateExercise form div label {
   text-align: left;
   display: inline-block;
   width: 150px;
+}
+
+.CreateExercise form div.tt label {
+  vertical-align: middle;
 }
 
 .CreateExercise button {

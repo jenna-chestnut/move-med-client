@@ -34,6 +34,22 @@ function CreateExercise() {
     catch (err) { setLoading(false); setError(err.message); }
   }
 
+  const toolTip = (key) => {
+    const tip = key === 'img'
+    ?
+    <>
+    This field must contain a valid DIRECT image url.
+    <a href='https://postimages.org/' target='_blank' rel='noreferrer'>Click here for easy upload</a></>
+    :
+    <>
+    This field must contain a valid YouTube video ID.
+    <a href='https://commentpicker.com/youtube-video-id.php' target='_blank' rel='noreferrer'>Click here to find your YouTube video's ID</a></>
+
+    return <span className={`tool-tip-${key}`}>[help]
+      <span className={`${key}-tt`}>{tip}</span>
+    </span>
+  }
+
   const stillLoading = <div className='loading'><p>Loading..</p><img src={loadingImg} alt='loading'/></div>;
 
   return ( loading ? 
@@ -45,15 +61,16 @@ function CreateExercise() {
           {error && <p>{error}</p>}
         </div>
 
-      <div><label htmlFor='exercise_name'>Exercise name:</label>
+      <div><label htmlFor='exercise_name'>Exercise Name *</label>
       <input type='text' id='exercise_name' name='exercise_name' defaultValue={exercise_name} 
       onChange={(e) => setExName(e.target.value)} required></input></div>
 
-      <div><label htmlFor='imgurl'>Image URL:</label>
+      <div className='tt'><label htmlFor='imgurl'>Image URL * {toolTip('img')}</label>
       <input type='text' id='imgurl' name='imgurl' defaultValue={imgurl} 
       onChange={(e) => setImgURL(e.target.value)} required></input></div>
 
-      <div><label htmlFor='videourl'>Youtube Video ID:</label>
+
+      <div className='tt'><label htmlFor='videourl'>Youtube Video ID * {toolTip('vid')}</label>
       <input type='text' id='videourl' name='videourl' defaultValue={videourl} 
       onChange={(e) => setVidURL(e.target.value)} required></input></div>
 
