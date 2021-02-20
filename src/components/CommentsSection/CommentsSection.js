@@ -3,13 +3,16 @@ import Comment from '../Comment/Comment';
 import CommentsService from '../../Services/comments-api-service';
 import { useState } from 'react';
 import SubmitCommentForm from '../SubmitCommentForm/SubmitCommentForm';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/user/userSlice';
 
 function CommentsSection(props) {
+  const u = useSelector(selectUser);
   const { comments, exc_id, setComments } = props;
   const [error, setError] = useState(null);
   const [addingComment, setAdding] = useState(false);
 
-  const submitComment = async (ev, comment_text, editing, commentId) => {
+  const submitComment = async (ev, comment_text, editing, commentId, closeForm) => {
     ev.preventDefault();
 
     let commentData = {comment_text};
@@ -18,11 +21,18 @@ function CommentsSection(props) {
     try {
       if (editing) {
         newComment = await CommentsService.updateComment(commentData, commentId);
+        const newComments = comments.map(el => {
+          return el.id === newComment.id 
+          ?  {...newComment, full_name: u.name} 
+          : el
+        })
+        await setComments(newComments);
       }  
       else {
         newComment = await CommentsService.createComment(commentData, exc_id);
+        await setComments([...comments, {...newComment, full_name: u.name}]);
       }
-      await setComments([...comments, newComment]);
+      await closeForm();
     }
     catch (err) { setError(err.message) }
   }
@@ -48,14 +58,17 @@ function CommentsSection(props) {
 
   return (
     <div className='comments-section'>
+      <h3>COMMENTS</h3>
       <div role='alert'>
           {error && <p>{error}</p>}
         </div>
-    { addingComment ? 
-    <SubmitCommentForm cancelForm={() => setAdding(false)} submitComment={submitComment} />
-    : <button onClick={() => setAdding(true)}>Add Comment</button>
-    }
     {listComments()}
+
+    { addingComment ? 
+    <SubmitCommentForm closeForm={() => setAdding(false)} submitComment={submitComment} />
+    : <button className='add-comment-button' onClick={() => setAdding(true)}>Add Comment</button>
+    }
+
     </div>
   )
 }

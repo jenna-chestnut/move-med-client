@@ -1,0 +1,17 @@
+.c-ve-d {
+  border: 1px solid grey;
+  width: 95%;
+  margin: 25px auto;
+  border-radius: 15px;
+}
+
+.ex-vid-and-img .group {
+  width: 95%;
+  margin: 10px auto;
+}
+
+@media all and (min-width: 800px) {
+  .c-ve-d {
+    width: 85%;
+  }
+}

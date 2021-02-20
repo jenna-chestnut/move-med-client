@@ -24,7 +24,7 @@ function EditExerciseForm(props) {
     setDuration(e.duration);
     setNote(e.add_note);
     }
-  }, [imgurl, add_note, e.exercise_name, e.videourl, e.imgurl, e.frequency, e.duration, e.add_note])
+  }, [imgurl, add_note, e])
 
   const updateExercise = async (ev) => {
     ev.preventDefault();
@@ -52,30 +52,32 @@ function EditExerciseForm(props) {
   const renderEditForm = () => {
     const inputFields = userType === 'admin' 
     ? 
-      <><label htmlFor='exercise_name'>Exercise name:</label>
+      <>
+      <div><label htmlFor='exercise_name'>Exercise name:</label>
       <input type='text' id='exercise_name' name='exercise_name' defaultValue={exercise_name} 
-      onChange={(e) => setExName(e.target.value)} required></input>
+      onChange={(e) => setExName(e.target.value)} required></input></div>
 
-      <label htmlFor='imgurl'>Image URL:</label>
+      <div><label htmlFor='imgurl'>Image URL:</label>
       <input type='text' id='imgurl' name='imgurl' defaultValue={imgurl} 
-      onChange={(e) => setImgURL(e.target.value)} required></input>
+      onChange={(e) => setImgURL(e.target.value)} required></input></div>
 
-      <label htmlFor='videourl'>Youtube Video ID:</label>
+      <div><label htmlFor='videourl'>Youtube Video ID:</label>
       <input type='text' id='videourl' name='videourl' defaultValue={videourl} 
-      onChange={(e) => setVidURL(e.target.value)} required></input>
+      onChange={(e) => setVidURL(e.target.value)} required></input></div>
      </>
     :
-      <><label htmlFor='frequency'>Assign exercise for:</label>
+      <>
+      <div><label htmlFor='frequency'>Assign exercise for:</label>
       <input type='text' id='frequency' name='frequency' defaultValue={frequency} 
-      onChange={(e) => setFreq(e.target.value)} required></input>
+      onChange={(e) => setFreq(e.target.value)} required></input></div>
 
-      <label htmlFor='duration'>times every:</label>
+      <div><label htmlFor='duration'>times every:</label>
       <input type='text' id='duration' name='duration' defaultValue={duration} 
-      onChange={(e) => setDuration(e.target.value)} required></input>
+      onChange={(e) => setDuration(e.target.value)} required></input></div>
 
-      <label htmlFor='add_note'>Add note:</label>
-      <input type='text' id='add_note' name='add_note' defaultValue={add_note} 
-      onChange={(e) => setNote(e.target.value)} required></input></>;
+      <div className='add-ex-note'><label htmlFor='add_note'>Add note:</label>
+      <textarea id='add_note' name='add_note' defaultValue={add_note} 
+      onChange={(e) => setNote(e.target.value)} required></textarea></div></>;
 
     return imgurl || add_note ?
     <div className='EditExerciseForm'>

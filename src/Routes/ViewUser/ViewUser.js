@@ -42,10 +42,9 @@ function ViewUser() {
   }
 
   const listClientExercises = () => {
-    return user ?
-    user.clientExercises.map((e, idx) => {
-      return <ExerciseItem ex={e} key={idx} client={true}/>
-    }) : '';
+    return user.clientExercises.map((e, idx) => {
+      return <ExerciseItem ex={e} key={idx} list={true} clientEx={true}/>
+    })
   }
 
   const handleView = () => {
@@ -53,19 +52,23 @@ function ViewUser() {
       ?
       <>
 
-      <div className='item'>
+      <div className={`item ${u.is_admin && 'admin-view-mb'}`}>
       <h2>{user.client.full_name}</h2>
       <UserGoal g={goal} setGoal={changeGoal} user_id={userId}/>
-      <ExerciseSelect client_id={user.client.id}/>
       </div>
 
-      <div className='item'>
+      <div className={`item u-v-c ${u.is_admin && 'admin-view-client'}`}>
+      <div className='assign-exercise'>
+      <h3>Assign Exercise</h3>
+      <ExerciseSelect client_id={user.client.id}/>
+      </div>
+      
       <h3 className='exercises-header'>Client Exercises</h3>
         {listClientExercises()}
       </div>
       </>
       :
-      <div className='item'>
+      <div className={`item ${u.is_admin && 'admin-view-mb'}`}>
         <h2>{user.full_name}</h2>
         <p>Provider: {user.is_provider ? 'True' : 'False'}</p>
         <p>Admin: {user.is_admin ? 'True' : 'False'}</p>

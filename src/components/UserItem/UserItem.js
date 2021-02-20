@@ -8,7 +8,7 @@ function UserItem(props) {
   ? `/view/clients/${u.id}` : `/view/users/${u.id}`;
 
     return (
-      <div className="exercise-item">
+      <div className="user-item">
         <h4>
           <Link to={link}>
             {u.full_name}

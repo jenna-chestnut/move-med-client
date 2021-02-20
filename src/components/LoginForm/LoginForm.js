@@ -11,9 +11,9 @@ import './LoginForm.css';
 
 
 function LoginForm(props) {
+  const dispatch = useDispatch();
   const [error, setErr] = useState(null)
   const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch();
 
   const handleSubmit = async ev => {
     ev.preventDefault();
@@ -52,7 +52,7 @@ function LoginForm(props) {
     return (
       loading 
       ?
-      <div className='loading'><p>Loading..</p><img src={loadingImg} alt='loading'/></div>
+      <div className='loading'><h3>L o a d i n g . . .</h3><img src={loadingImg} alt='loading'/></div>
       :
       <form
         className='LoginForm'

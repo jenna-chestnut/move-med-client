@@ -11,7 +11,7 @@ function ClientDashView() {
   const renderExercises = () => {
     return ex.exercises 
     ?  ex.exercises.map((e, idx) => {
-      return <ExerciseItem ex={e} client={true} key={idx}/> 
+      return <ExerciseItem ex={e} list={true} clientEx={true} key={idx}/> 
     })
     :
     <div className='loading'><p>Loading..</p><img src={loadingImg} alt='loading'/></div>
@@ -20,7 +20,7 @@ function ClientDashView() {
     return (
       <div className='ClientDashView'>
         <span className='clientdash-goal'>
-          Goal: { ex.goal ? ex.goal.goal_text : 'Loading...' }
+         { ex.goal ? `Goal: ${ex.goal.goal_text}` : '' }
         </span>
         <div className='client-exercises'>
         <h2 className='exercises-header'>Your Exercises</h2> 

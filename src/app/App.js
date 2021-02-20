@@ -21,6 +21,7 @@ import { setError, selectError } from '../features/appError/appErrorSlice';
 import CreateExercise from '../Routes/CreateExercise/CreateExercise';
 import CreateUser from '../Routes/CreateUser/CreateUser';
 import PublicOnlyRoute from '../Routes/PublicOnlyRoute/PublicOnlyRoute';
+import About from '../Routes/About/About';
 
 function App() {
   const dispatch = useDispatch();
@@ -71,6 +72,7 @@ function App() {
       <main>
       <Switch>
         <PublicOnlyRoute exact path='/' component={LandingPage}/>
+        <PublicOnlyRoute exact path='/about' component={About}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
         <PrivateRoute path='/view/exercise/:userType/:exerciseId' 
         component={ViewExercise}/>

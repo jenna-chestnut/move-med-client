@@ -47,7 +47,7 @@ function ExerciseSelect(props) {
         history.push(`/assign-exercise/${exId}/${client_id}`) 
       }}>
       {renderOptions()}
-    <button type='submit'>Assign Exercise</button>
+    <button type='submit'>Assign</button>
     </form>
 }
 

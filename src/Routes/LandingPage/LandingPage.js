@@ -18,7 +18,9 @@ function LandingPage() {
 
       <div className='item landing-page-descs-c'>
       <div className='item group l-p-d lp-clients'>
-        <h2 className='small-item'>CLIENTS</h2>
+        <div className='small-item'>
+        <h2>CLIENTS</h2>
+        </div>
         <div className='item-double group'>
         <p><i>Continue your care seamlessly.</i></p>
         <p>Access your home exercise program anywhere!</p>
@@ -26,7 +28,9 @@ function LandingPage() {
        </div>
 
        <div className='item group l-p-d lp-providers'>
-       <h2 className='small-item'>PROVIDERS</h2>
+       <div className='small-item'>
+       <h2>PROVIDERS</h2>
+       </div>
        <div className='item-double group'>
         <p><i>Keep your clients up to date.</i></p>
         <p>View their feedback as they progress!</p>

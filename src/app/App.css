@@ -30,10 +30,13 @@ input[type='text'], input[type='password'] {
 a {
   text-decoration: none;
   color: black;
+  transition: 1s;
 }
 
 a:hover {
   color: #17b7d3;
+  letter-spacing: 2px;
+  transition: 1s;
 }
 
 .loading img {
@@ -76,7 +79,7 @@ button:active, button:focus {
 
 button.edit-button, .create-ex {
   position: absolute;
-  margin: -15px 25px 0 0;
+  margin: -15px 15px 0 0;
   top: 0;
   right: 0;
   z-index: 100;
@@ -85,5 +88,11 @@ button.edit-button, .create-ex {
 @media all and (min-width: 600px) {
   .group {
     flex-direction: row;
+  }
+  button.edit-button, .create-ex {
+    margin: -15px 25px 0 0;
+  }
+  label {
+    display: inline;
   }
 }

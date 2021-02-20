@@ -53,7 +53,7 @@ function EditUser() {
 
   const renderButton = (key) => {
     if (key === 'admin' ) {
-      return <button onClick={(e) => {
+      return <button className={key} onClick={(e) => {
         if (window.confirm('Are you SURE you want to change this users permissions? As an admin, they have access to all clients and providers.')) {
           handleSubmitData(e, null, 'is_admin', !user.is_admin)
           }}}>
@@ -61,7 +61,7 @@ function EditUser() {
       </button>
     }
     else {
-      return <button onClick={(e) => {
+      return <button className={key} onClick={(e) => {
         if (window.confirm('Are you SURE you want to change this users permissions? As a provider they have access to all clients.')) {
           handleSubmitData(e, null, 'is_provider', !user.is_provider)
           }}}>
@@ -108,11 +108,14 @@ function EditUser() {
           />
         </div>
         <button type='submit'>
-          Update
+          Update Info
         </button>
       </form>
       }
+      <div className='permissions'>
+      <h3> Permissions: </h3>
       {user && renderButton('admin')}{user && renderButton('provider')}
+      </div>
     </div>
   );
 }

@@ -2,11 +2,49 @@
   margin-top: 35px;
 }
 
-.exercises-header {
-  background-color: #17b7d370;
-  margin-bottom: 15px;
-}
-
 .ViewUser .exercise-item .group {
   flex-direction: column;
+}
+
+.ViewUser .exercises-header {
+  margin-top: 45px;
+}
+
+.assign-exercise {
+  background-color: #86878a13;
+  width: 90%;
+  margin: auto;
+  padding: 1px 10px 10px 10px;
+  border-radius: 15px;
+}
+
+.assign-exercise select {
+  width: 95%;
+  margin: 5px;
+  padding: 5px;
+}
+
+.assign-exercise button {
+  margin: 5px;
+  background-color: rgb(209, 66, 0);
+}
+
+.u-v-c {
+  margin-bottom: 45px;
+}
+
+.admin-view-mb {
+  margin-top: 25px;
+}
+
+@media all and (min-width: 800px) {
+  .assign-exercise select {
+    width: 55%;
+  }
+  .admin-view-client {
+    margin-top: 45px;
+  }
+  .admin-view-mb {
+    margin-top: 0;
+  }
 }

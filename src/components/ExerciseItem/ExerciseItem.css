@@ -1,4 +1,7 @@
 .exercise-item {
+  width: 95%;
+  margin: auto;
+  border-radius: 10px;
   position: relative;
 }
 
@@ -17,13 +20,11 @@
 .exercise-item:hover {
   color: #098ba1;
   background-color: rgb(226, 226, 226);
-  overflow: hidden;
 }
 
 .details:hover {
   color: black;
   background-color: white;
-  overflow: hidden;
 }
 
 .exercise-item hr {
@@ -35,11 +36,11 @@
 .exercise-item .group {
   margin-top: 15px;
   background-color: #86878a13;
-  padding: 15px;
+  padding-bottom: 15px;
 }
 
 .details {
-  padding-top: 15px;
+  padding-top: 55px;
   box-shadow: 0px 5px 12px 10px #334b4356;
   margin-bottom: 45px;
   border-radius: 15px;
@@ -59,4 +60,13 @@
 
 .exercise-item img {
   max-height: 500px;
+}
+
+@media all and (min-width:800px) {
+  .exercise-item {
+    width: 75%;
+  }
+  .details {
+    padding-top: 15px;
+  }
 }

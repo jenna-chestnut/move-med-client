@@ -1,3 +1,35 @@
 .EditExerciseForm form {
   padding-top: 5px;
 }
+
+#frequency, #duration {
+  width: 50px;
+}
+
+.add-ex-note {
+  margin-top: 10px;
+  display: block;
+}
+
+.EditExerciseForm textarea {
+  margin-top: 10px;
+  width: 85%;
+  height: 50px;
+}
+
+.EditExerciseForm button {
+  display: block;
+  margin: 15px auto;
+}
+
+@media all and (min-width: 800px) {
+  .EditExerciseForm button, .EditExerciseForm div {
+    display: inline;
+  }
+  div.add-ex-note, .add-ex-note label {
+    display: block;
+  }
+  .EditExerciseForm textarea {
+    width: 45%;
+  }
+}

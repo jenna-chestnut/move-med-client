@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import { selectUser } from '../../features/user/userSlice';
 import { useSelector } from 'react-redux';
 import './ViewExercise.css';
-import Fade from 'react-reveal/Fade';
 import ExercisesService from '../../Services/exercise-api-service';
 import CommentsService from '../../Services/comments-api-service';
 import ClientsService from '../../Services/client-api-service';
 import EditExerciseForm from '../../components/EditExerciseForm/EditExerciseForm';
 import CommentsSection from '../../components/CommentsSection/CommentsSection';
 import { setError } from '../../features/appError/appErrorSlice';
+import ExerciseVidAndImg from '../../components/ExerciseVidAndImg/ExerciseVidAndImg';
+import Fade from 'react-reveal/Fade';
 
 
 function ViewExercise() {
@@ -32,41 +33,28 @@ function ViewExercise() {
         else {
           ex = await ExercisesService.getExercise(id);
         }
-
         if (ex.exercise_id) {
           const c = await CommentsService.getComments(ex.id);
           await setComments(c);
         }
-
         await setExercise(ex);
         }
-       catch (err) { setError(err) };
+       catch (err) { setError(err.message) };
       }
     }
     getData();
   })
 
   const handleView = () => {
-    const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
-
-    return <><Fade>
-    <h2>{ex.exercise_name}</h2>
-    {ex.frequency 
-    ? <p>Frequency: {ex.frequency}x every {ex.duration}</p> : ''}
-    {ex.add_note ? <p>Notes: {ex.add_note}</p> : ''}
-    <div className='group'>
-    <div className='item'>
-    <img src={ex.imgurl} alt='exercise example' /></div>
-
-    <div className='item'>
-    <iframe className='exc-vid' width="560" title={ex.exercise_name} height="315" src={videoURL} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    </div></Fade>
+    return <Fade>
+    <ExerciseVidAndImg clientEx={ex.frequency ? true : false}
+    ex={ex}/>
     { 
       comments ? <CommentsSection comments={comments}
       exc_id={ex.id} setComments={(d) => setComments(d)}/> 
       : ''
     }
-    </>
+    </Fade>
   }
 
   const editButton = () => {
@@ -80,6 +68,7 @@ function ViewExercise() {
 
   return (
     <div className='ViewExercise'>
+       <h2>{ex ? ex.exercise_name : ''}</h2>
       {editing && <EditExerciseForm e={ex} userType={userType} setExc={setExercise} setEdit={setEditing}/>}
       {ex && editButton()}
       {ex && handleView()}

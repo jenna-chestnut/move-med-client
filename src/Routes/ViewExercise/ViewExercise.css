@@ -1,5 +1,9 @@
 .ViewExercise {
-  margin-top: 45px;
+  margin-top: 1px;
+}
+
+.ViewExercise h2 {
+  padding-top: 35px;
 }
 
 .comments {
@@ -12,4 +16,13 @@
 
 .comments li {
   list-style-type: none;
+}
+
+@media all and (min-width: 800px) {
+  .ViewExercise {
+    margin-top: 45px;
+  }
+  .ViewExercise h2 {
+    padding-top: 15px;
+  }  
 }

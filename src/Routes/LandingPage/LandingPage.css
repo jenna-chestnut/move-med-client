@@ -8,10 +8,14 @@
 
 .lp-clients, .lp-providers {
   font-weight: bold;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 300px;
+}
+
+.lp-clients p, .lp-providers p {
+  font-size: 20px;
 }
 
 .lp-clients {
@@ -23,11 +27,35 @@
  background-image: url('../../images/on-a-computer-filtered.png');
 }
 
-.lp-providers h2 {
+.login {
+  background-image: url('../../images/dark-leaves.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login form, .login .loading {
+  color: white;
+  background-color: #4b4b4b1a;
+  padding: 25px;
+  backdrop-filter: blur(4px);
+  border: 1px solid transparent;
+  border-image: linear-gradient(to top right, rgb(83, 187, 123) , #2247312f, yellow);
+  border-image-slice: 1;
+  border-radius: 10px;
+  box-shadow: 0px 5px 12px 10px #00000034;
+}
+
+.small-item {
+  display: flex;
+  padding: 10px;
+}
+
+.lp-providers .small-item {
   background-color: rgb(255, 231, 14);
 }
 
-.lp-clients h2 {
+.lp-clients .small-item {
   color: white;
   background-color: rgb(0, 124, 114);
 }
@@ -50,20 +78,11 @@ h2.small-item {
   padding: 20px 10px 20px 25px;
 }
 
-.dash-button, .login {
+.login {
   min-height: 300px;
   display: flex;
   align-content: center;
   justify-content: center;
-}
-
-.dash-button {
-  min-width: 250px;
-}
-
-.dash-button button, .login form, .login .loading {
-  align-self: center;
-  min-height: 50px;
 }
 
 @media all and (min-width: 800px) {

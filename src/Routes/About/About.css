@@ -1,0 +1,110 @@
+.homepage-link {
+  background-color: #c3e9ffbd;
+  width: 100px;
+  padding: 15px;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid #002e5856;
+  backdrop-filter: blur(2px);
+}
+
+.db-bg {
+  background-color: #004449;
+  font-size: 18px;
+  color: white;
+}
+
+
+.homepage-link:hover {
+  background-color: #ffffffbd;
+}
+
+.About h2 {
+  font-size: 35px;
+}
+
+.About p {
+  width: 95%;
+  line-height: 30px;
+  margin: 20px auto;
+}
+
+.About .item p {
+  width: 95%;
+  margin: auto;
+}
+
+.hero {
+  background-image: url('../../images/working-out-at-desk.png');
+  background-position: top;
+  background-size: cover;
+  min-height: 400px;
+  display: flex;
+}
+
+.hero h3 {
+  align-self: center;
+  font-size: 25px;
+  background-color: #ffffffa8;
+  backdrop-filter: blur(2px);
+  display: flex;
+  border-radius: 15px;
+  margin: auto;
+  width: 90%;
+  padding: 5px;
+}
+
+.padded {
+  padding: 25px 0px;
+}
+
+.fitness-background {
+  background-image: url('../../images/fitness-cartoons-pattern.jpeg');
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 500px;
+  display: flex;
+}
+
+.fitness-background button {
+  margin: 20px;
+  display: block;
+}
+
+.fitness-background h3 {
+  margin: auto;
+  background-color: #ffffffb4;
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.buttons {
+  margin: auto;
+  width: 95%;
+  display: flex;
+  align-content: space-between;
+}
+
+@media all and (min-width:800px) {
+  .About p {
+    width: 75%;
+  }  
+  .About .item p {
+    width: 85%;
+    margin: auto;
+  }
+  .hero h3 {
+    width: auto;
+    padding: 40px;
+  }
+  .buttons {
+    width: 60%;
+  }
+  .fitness-background button {
+    margin: auto;
+    display: inline;
+    height: 40px;
+  }
+}

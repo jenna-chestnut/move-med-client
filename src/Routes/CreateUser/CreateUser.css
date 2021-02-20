@@ -1,0 +1,34 @@
+.CreateAccount form {
+  background-color: #0000000c;
+  width: 95%;
+  margin: auto;
+  padding: 20px 1px;
+  border-radius: 10px;
+}
+
+.CreateAccount form div label {
+  text-align: left;
+  display: inline-block;
+  width: 150px;
+}
+
+.permission-checkboxes {
+padding: 10px;
+}
+
+.CreateAccount form div label.p-c {
+  width: auto;
+  margin: 5px;
+  text-align: center;
+}
+
+.CreateAccount input[type='checkbox'] {
+  margin-right: 15px;
+}
+
+@media all and (min-width: 800px) {
+  .CreateAccount form {
+    width: 65%;
+    padding: 20px;
+  }
+}

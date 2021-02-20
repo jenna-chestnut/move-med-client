@@ -4,6 +4,7 @@ import loadingImg from '../../images/Preloader_3.gif';
 import { useHistory } from 'react-router-dom';
 import AuthApiService from '../../Services/auth-api-service';
 import { selectUsers, setUsers } from '../../features/admin/adminSlice';
+import './CreateUser.css'
 
 function CreateUser() {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ function CreateUser() {
 
     try {
       const newUser = { user_name, full_name, password, passwordConfirm, is_admin, is_provider };
-      if (password !== passwordConfirm) setError('Passwords do not match')
+      
+      if (password !== passwordConfirm) 
+      throw new Error('Passwords do not match')
 
       for (const [key, value] of Object.entries(newUser)) {
         if (!value) setError(`${key} must have a value`);
@@ -35,7 +38,7 @@ function CreateUser() {
       await setLoading(false);
       await history.push('/dashboard');
     }
-    catch (err) { setLoading(false); setError(err); }
+    catch (err) { setLoading(false); setError(err.message); }
   }
 
   const stillLoading = <div className='loading'><p>Loading..</p><img src={loadingImg} alt='loading'/></div>;
@@ -49,39 +52,40 @@ function CreateUser() {
           {error && <p>{error}</p>}
         </div>
 
-      <label htmlFor='full_name'>Full name:</label>
+      <div><label htmlFor='full_name'>Full name:</label>
       <input type='text' id='full_name' name='full_name' 
-      onChange={(e) => setFullName(e.target.value)} required></input>
+      onChange={(e) => setFullName(e.target.value)} required></input></div>
 
-      <label htmlFor='user_name'>User name:</label>
+      <div><label htmlFor='user_name'>User name:</label>
       <input type='text' id='user_name' name='user_name' 
-      onChange={(e) => setUserName(e.target.value)} required></input>
+      onChange={(e) => setUserName(e.target.value)} required></input></div>
 
-      <label htmlFor='password'>Password:</label>
+      <div><label htmlFor='password'>Password:</label>
       <input type='password' id='password' name='password' 
-      onChange={(e) => setPass(e.target.value)} required></input>
+      onChange={(e) => setPass(e.target.value)} required></input></div>
 
-      <label htmlFor='password-confirm'>Confirm password:</label>
+      <div><label htmlFor='password-confirm'>Confirm password:</label>
       <input type='password' id='password-confirm' name='password-confirm' 
-      onChange={(e) => setPassConf(e.target.value)} required></input>
+      onChange={(e) => setPassConf(e.target.value)} required></input></div>
 
-      <label htmlFor='admin'>Admin:</label>
+      <div className='permission-checkboxes'>
+      <label className='p-c' htmlFor='admin'>Admin:</label>
       <input type='checkbox' id='admin' name='admin'
       onChange={(e) => {
         if (!is_admin) {
         if (window.confirm('Are you sure? As an admin this account will have access to all users.'))
         setAdmin(true)
         } else setAdmin(false);
-      }}></input>
+      }} checked={is_admin}></input>
 
-      <label htmlFor='provider'>Provider:</label>
+      <label className='p-c' htmlFor='provider'>Provider:</label>
       <input type='checkbox' id='provider' name='provider'
       onChange={(e) => {
         if (!is_provider) {
           if (window.confirm('Are you sure? As a provider this account will have access to all clients.'))
           setProvider(true)
           } else setProvider(false);
-      }}></input>
+      }} checked={is_provider}></input></div>
 
       <button type='submit'>Create Account</button>
       </form>

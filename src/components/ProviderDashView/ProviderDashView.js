@@ -45,7 +45,7 @@ function ProviderDashView() {
     return exercises
     ?
     exercises.map((e, idx) => {
-      return <ExerciseItem ex={e} key={idx}/> 
+      return <ExerciseItem key={idx} list={true} ex={e}/> 
     })
     : stillLoading;
   }
@@ -57,9 +57,11 @@ function ProviderDashView() {
           {renderExercises()}
           </div>
         <div className='item dash-item'>
+          <div className='g-bg'>
           <h3 className='clients-header'>Clients</h3>
           {renderClients()}
           </div>
+        </div>
       </div>
     );
 }

@@ -4,6 +4,7 @@ import loadingImg from '../../images/Preloader_3.gif';
 import ExercisesService from '../../Services/exercise-api-service';
 import { clearExercises } from '../../features/exercises/exerciseSlice';
 import { useHistory } from 'react-router-dom';
+import './CreateExercise.css';
 
 function CreateExercise() {
   const dispatch = useDispatch();
@@ -44,17 +45,17 @@ function CreateExercise() {
           {error && <p>{error}</p>}
         </div>
 
-      <label htmlFor='exercise_name'>Exercise name:</label>
+      <div><label htmlFor='exercise_name'>Exercise name:</label>
       <input type='text' id='exercise_name' name='exercise_name' defaultValue={exercise_name} 
-      onChange={(e) => setExName(e.target.value)} required></input>
+      onChange={(e) => setExName(e.target.value)} required></input></div>
 
-      <label htmlFor='imgurl'>Image URL:</label>
+      <div><label htmlFor='imgurl'>Image URL:</label>
       <input type='text' id='imgurl' name='imgurl' defaultValue={imgurl} 
-      onChange={(e) => setImgURL(e.target.value)} required></input>
+      onChange={(e) => setImgURL(e.target.value)} required></input></div>
 
-      <label htmlFor='videourl'>Youtube Video ID:</label>
+      <div><label htmlFor='videourl'>Youtube Video ID:</label>
       <input type='text' id='videourl' name='videourl' defaultValue={videourl} 
-      onChange={(e) => setVidURL(e.target.value)} required></input>
+      onChange={(e) => setVidURL(e.target.value)} required></input></div>
 
       <button type='submit'>Create Exercise</button>
       </form>

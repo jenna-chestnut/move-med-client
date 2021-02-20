@@ -56,7 +56,7 @@ function AdminDashView() {
     return exercises
     ?
     exercises.map((e, idx) => {
-      return <ExerciseItem ex={e} key={idx}/> 
+      return <ExerciseItem list={true} ex={e} key={idx}/> 
     })
     : 
     stillLoading;
@@ -71,7 +71,7 @@ function AdminDashView() {
         {renderProviders()}
         </div>
 
-        <div className='item dash-item'>
+        <div className='item dash-item g-bg'>
         <h3 className='clients-header'>Clients</h3> 
         {renderClients()}
         </div>

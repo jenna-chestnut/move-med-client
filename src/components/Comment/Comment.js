@@ -10,26 +10,30 @@ function Comment(props) {
   const { comment, submitComment, deleteComment } = props;
   const [editing, setEditing] = useState(false);
 
+  const closeForm = () => {
+    setEditing(false);
+  }
+
   const editComment = (
     <SubmitCommentForm comment={comment} 
-    submitComment={submitComment} cancelForm={() => setEditing(false)} />
+    submitComment={submitComment} closeForm={closeForm} />
   )
 
   const regComment = (
   <div className='single-comment'>
-  <span>{comment.comment_text}</span>
+  <p>{comment.comment_text}</p>
   <span> - {comment.full_name} </span>
-  <span>Posted {new Date(comment.date_created).toLocaleString()}</span>
+  <span className='date'>Posted {new Date(comment.date_created).toLocaleString()}</span>
   { 
     comment.user_id === u.id &&
-    <>
+    <div className='comment-buttons'>
     <button onClick={(e) => { deleteComment(e, comment.id) }}>
       Delete
     </button>
     <button onClick={() => { setEditing(true) }}>
       Edit
     </button>
-    </>
+    </div>
   }
   </div>
   )

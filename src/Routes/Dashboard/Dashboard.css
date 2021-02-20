@@ -1,22 +1,60 @@
+.dashboard {
+  padding-bottom: 45px;
+}
+
 .clients-header {
   color: white;
   background-color: #007c72;
-}
-
-.exercises-header, .clients-header {
-  margin: 0 0 15px 0;
-  padding: 15px;
-}
-
-.exercises-header {
-  background-color: #17b7d370;
+  width: 100%;
 }
 
 .dash-item {
+  margin-bottom: 20px;
+}
+
+.dash-name {
+  font-size: 25px;
+}
+
+.exercises-header, .providers-header {
+  width: 85%;
+  margin: 15px auto;
+  padding: 15px;
+}
+
+.clients-header {
+  padding: 15px 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.exercises-header {
+  border: 1px solid #0000003d;
+  width: 75%; 
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.g-bg {
+  width: 100%;
   background-color: #86878a13;
+  padding: 0;
+  padding-bottom: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 @media all and (min-width: 600px) {
+  .exercises-header, .providers-header {
+    margin: 0 auto 15px auto;
+  }
+
+  .clients-header {
+   margin: 0;
+   padding: 15px 0;
+   width: 100%;
+  }
+
   .dash-view {
     margin-top: 25px;
   }

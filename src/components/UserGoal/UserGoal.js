@@ -23,15 +23,15 @@ function UserGoal(props) {
   const renderGoalView = () => {
     return toEdit 
     ? 
-    <form onSubmit={updateGoal}>
+    <form className='goal-form' onSubmit={updateGoal}>
       <label htmlFor='goal-input'>Goal:</label>
-      <input type='text' id='goal-input' name='goal' value={g} 
-      onChange={(e) => setGoal(e.target.value)} required></input>
+      <textarea id='goal-input' name='goal' value={g} 
+      onChange={(e) => setGoal(e.target.value)} required></textarea>
       <button type='submit'>Update</button>
     </form>
     :
-    <><p>Goal: {g}</p>
-    <button onClick={() => editing(true)}>Update Goal</button></>
+    <><p className='user-view-goal'>Goal: {g}
+    <button onClick={() => editing(true)}>Update Goal</button></p></>
   }
 
     return renderGoalView();
