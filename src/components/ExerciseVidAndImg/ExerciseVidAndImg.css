@@ -5,6 +5,18 @@
   border-radius: 15px;
 }
 
+.video-box {
+  display: flex;
+}
+
+iframe.exc-vid {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+  vertical-align: middle;
+}
+
 .ex-vid-and-img .group {
   width: 95%;
   margin: 10px auto;

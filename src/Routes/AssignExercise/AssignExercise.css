@@ -1,0 +1,12 @@
+.change-client-button, .change-client-button:hover {
+  background-color: transparent;
+}
+
+.change-client-button {
+  color: black;
+  margin-left: 20px;
+}
+
+.change-client-button:hover {
+  color: #00a6ac;
+}

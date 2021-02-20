@@ -10,7 +10,7 @@ function ExerciseVidAndImg(props) {
 
     const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
 
-    const video = <iframe className='exc-vid' width="95%" title={ex.exercise_name} height="315" src={videoURL} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+    const video = <iframe className='exc-vid' width="95%" title={ex.exercise_name} height="315" src={videoURL} frameBorder="0" margin="auto" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
     const details = () => {
       if (list) {
@@ -44,7 +44,7 @@ function ExerciseVidAndImg(props) {
         <img src={ex.imgurl} alt='exercise example' />
       </div>
 
-      <div className='item'>
+      <div className='item video-box'>
         {video}
       </div>
     </div>

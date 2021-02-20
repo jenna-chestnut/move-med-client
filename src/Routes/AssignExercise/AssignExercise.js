@@ -7,6 +7,7 @@ import ClientsService from '../../Services/client-api-service';
 import { selectUser } from '../../features/user/userSlice';
 import ClientSelect from '../../components/ClientSelect/ClientSelect';
 import { clearUsers } from '../../features/admin/adminSlice';
+import ExerciseVidAndImg from '../../components/ExerciseVidAndImg/ExerciseVidAndImg';
 
 function AssignExercise() {
   const u = useSelector(selectUser);
@@ -70,8 +71,6 @@ function AssignExercise() {
     catch (err) { setError(err.message) };
   }
 
-  const videoURL = ex ? `https://www.youtube.com/embed/${ex.videourl}` : '';
-
   return (
     <div className='AssignExercise'>
       <h2>Assign Exercise</h2>
@@ -79,10 +78,12 @@ function AssignExercise() {
       <h3>{ex.exercise_name}</h3>}
 
       <span> Assigning to: </span>
-      { client ? <><p>{client.full_name}</p>
-        <button onClick={() => setClient(null)}>
+      { client ? <><b>{client.full_name}</b>
+        {clientId === 'unset'
+        ?
+        <button className='change-client-button' onClick={() => setClient(null)}>
           Change Client
-        </button></>
+        </button> : ''}</>
       :
       <ClientSelect admin={u.is_admin} setClient={updateClientData}/>
       }
@@ -104,16 +105,10 @@ function AssignExercise() {
       <input type='text' id='add_note' name='add_note' defaultValue={add_note} 
       onChange={(e) => setNote(e.target.value)} required></input>
 
-      <button type='submit'>Update</button>
+      <button type='submit'>Assign</button>
       </form>
       
-      <div className='group'>
-      <div className='item'>
-      <img src={ex.imgurl} alt='exercise example' /></div>
-  
-      <div className='item'>
-      <iframe className='exc-vid' width="560" title={ex.exercise_name} height="315" src={videoURL} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      </div> 
+      <ExerciseVidAndImg ex={ex}/>
     </>
     }
     </div>
