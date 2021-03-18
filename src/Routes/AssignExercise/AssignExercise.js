@@ -13,7 +13,6 @@ function AssignExercise() {
   const u = useSelector(selectUser);
   const history = useHistory();
   let { clientId, exerciseId } = useParams();
-  const exc_id = parseInt(exerciseId);
   const [error, setError] = useState(null);
   const [ex, setEx] = useState(null);
   const [client, setClient] = useState(null);
@@ -23,16 +22,18 @@ function AssignExercise() {
   const [add_note, setNote] = useState(null); 
 
   useEffect(() => {
+    if (!error) {
     const getData = async () => {
       try {
-        if (!ex || (settingClient && !client.id)) {
-        const exercise = await ExercisesService.getExercise(exc_id);
+        if (!ex || (settingClient && !client._id)) {
+        console.log(exerciseId)
+        const exercise = await ExercisesService.getExercise(exerciseId);
 
         if (clientId !== 'unset' || settingClient) {
           const id = clientId !== 'unset' 
           ? clientId : client;
 
-          const c = await ClientsService.getClient(parseInt(id))
+          const c = await ClientsService.getClient(id)
 
           await setClient(c.client);
           await setSetting(false);
@@ -43,6 +44,7 @@ function AssignExercise() {
        catch (err) { setError(err) };
       }
     getData();
+    }
   })
 
   const updateClientData = (id) => {
@@ -55,9 +57,9 @@ function AssignExercise() {
     let newExInfo = { 
       frequency, 
       duration,
-      user_id: client ? client.id : null,
-      exercise_id: exc_id,
-      provider_id: u.id  
+      user_id: client ? client._id : null,
+      exercise: exerciseId,
+      provider_id: u._id  
     };
     for (const [key, value] of Object.entries(newExInfo)) { if (!value) setError(`${key} must have a value to submit new exercise`); }
 

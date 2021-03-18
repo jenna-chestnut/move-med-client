@@ -28,8 +28,9 @@ function ViewUser() {
           }
         else {
           const u = await ClientsService.getClient(userId);
+          console.log(u)
           setUser(u);
-          setGoal(u.clientGoal.goal_text);
+          setGoal(u.client.user_goal ? u.client.user_goal : 'Keep moving!');
           }
         }
       } catch (err) { setError(err) };
@@ -60,7 +61,7 @@ function ViewUser() {
       <div className={`item u-v-c ${u.is_admin && 'admin-view-client'}`}>
       <div className='assign-exercise'>
       <h3>Assign Exercise</h3>
-      <ExerciseSelect client_id={user.client.id}/>
+      <ExerciseSelect client_id={user.client._id}/>
       </div>
       
       <h3 className='exercises-header'>Client Exercises</h3>

@@ -22,7 +22,7 @@ function CommentsSection(props) {
       if (editing) {
         newComment = await CommentsService.updateComment(commentData, commentId);
         const newComments = comments.map(el => {
-          return el.id === newComment.id 
+          return el._id === newComment._id 
           ?  {...newComment, full_name: u.name} 
           : el
         })
@@ -42,7 +42,7 @@ function CommentsSection(props) {
     if (window.confirm('Are you sure you want to delete this comment? This cannot be undone.')) {
     try {
         await CommentsService.deleteComment(commentId);
-        const newComments = comments.filter(el => el.id !== commentId);
+        const newComments = comments.filter(el => el._id !== commentId);
         await setComments(newComments);
     }
     catch (err) { setError(err.message) }

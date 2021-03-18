@@ -9,12 +9,12 @@ function UserGoal(props) {
 
   const updateGoal = async (ev) => {
     ev.preventDefault();
-    const {goal} = ev.target;
-    const newGoal = {goal_text : goal.value};
+    const {user_goal} = ev.target;
+    const newGoal = {user_goal : user_goal.value};
 
     try {
       const res = await ClientsService.updateClientGoal(newGoal, user_id);
-      await setGoal(res.goal_text);
+      await setGoal(res);
       await editing(false);
     }
     catch (err) { setError(err) }
@@ -25,7 +25,7 @@ function UserGoal(props) {
     ? 
     <form className='goal-form' onSubmit={updateGoal}>
       <label htmlFor='goal-input'>Goal:</label>
-      <textarea id='goal-input' name='goal' value={g} 
+      <textarea id='goal-input' name='user_goal' value={g} 
       onChange={(e) => setGoal(e.target.value)} required></textarea>
       <button type='submit'>Update</button>
     </form>

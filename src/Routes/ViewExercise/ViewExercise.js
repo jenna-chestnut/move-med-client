@@ -20,21 +20,22 @@ function ViewExercise() {
   const [comments, setComments] = useState(null);
 
   let { userType, exerciseId } = useParams();
-  const id = parseInt(exerciseId);
+  const id = exerciseId;
+  const clientEx = userType === 'client';
 
   useEffect(() => {
     const getData = async () => {
       if (!ex || (ex.exercise_id && !comments)) {
       try {
         let ex;
-        if (userType === 'client' && (u.is_admin || u.is_provider)) {
+        if (clientEx && (u.is_admin || u.is_provider)) {
         ex = await ClientsService.getClientExercise(id);
         }
         else {
           ex = await ExercisesService.getExercise(id);
         }
-        if (ex.exercise_id) {
-          const c = await CommentsService.getComments(ex.id);
+        if (clientEx) {
+          const c = await CommentsService.getComments(ex._id);
           await setComments(c);
         }
         await setExercise(ex);
@@ -47,11 +48,11 @@ function ViewExercise() {
 
   const handleView = () => {
     return <Fade>
-    <ExerciseVidAndImg clientEx={ex.frequency ? true : false}
+    <ExerciseVidAndImg clientEx={clientEx}
     ex={ex}/>
     { 
       comments ? <CommentsSection comments={comments}
-      exc_id={ex.id} setComments={(d) => setComments(d)}/> 
+      exc_id={ex._id} setComments={(d) => setComments(d)}/> 
       : ''
     }
     </Fade>

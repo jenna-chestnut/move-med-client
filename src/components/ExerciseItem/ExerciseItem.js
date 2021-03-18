@@ -16,7 +16,7 @@ function ExerciseItem(props) {
 
         <Fade><div className='exercise-name' 
         onClick={() => showExtraDetails(true)}>
-          <h4>{ex.exercise_name}</h4>
+          <h4>{clientEx ? ex.exercise.exercise_name : ex.exercise_name}</h4>
         </div></Fade>
 
         { details && <><hr/>

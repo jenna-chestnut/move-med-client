@@ -25,9 +25,9 @@ function Comment(props) {
   <span> - {comment.full_name} </span>
   <span className='date'>Posted {new Date(comment.date_created).toLocaleString()}</span>
   { 
-    comment.user_id === u.id &&
+    comment.user_id === u._id &&
     <div className='comment-buttons'>
-    <button onClick={(e) => { deleteComment(e, comment.id) }}>
+    <button onClick={(e) => { deleteComment(e, comment._id) }}>
       Delete
     </button>
     <button onClick={() => { setEditing(true) }}>

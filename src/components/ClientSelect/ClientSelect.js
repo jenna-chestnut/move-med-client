@@ -30,7 +30,7 @@ function ClientSelect(props) {
   const renderOptions = () => {
    const options = clients ? clients.map((el, idx) => {
     if (!el.is_admin && !el.is_provider)
-    return <option key={`cso${idx}`} value={el.id}>
+    return <option key={`cso${idx}`} value={el._id}>
       { el.full_name }
     </option>
     else return '';

@@ -39,7 +39,7 @@ function LoginForm(props) {
     }
       catch(err) {
         setLoading(false);
-        setErr(err.error); 
+        setErr(err.message); 
       }
   }
 
