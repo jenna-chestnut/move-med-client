@@ -22,6 +22,7 @@ import CreateExercise from '../Routes/CreateExercise/CreateExercise';
 import CreateUser from '../Routes/CreateUser/CreateUser';
 import PublicOnlyRoute from '../Routes/PublicOnlyRoute/PublicOnlyRoute';
 import About from '../Routes/About/About';
+import ErrorBoundary from '../ErrorBoundary';
 
 function App() {
   const dispatch = useDispatch();
@@ -69,6 +70,7 @@ function App() {
 
       { error && <div className='appError'><p>{ error }</p></div> }
 
+      <ErrorBoundary>
       <main>
       <Switch>
         <PublicOnlyRoute exact path='/' component={LandingPage}/>
@@ -92,6 +94,7 @@ function App() {
         <Route component={NotFound}/>
       </Switch>
       </main>
+      </ErrorBoundary>
 
       <Footer/>
     </div>
