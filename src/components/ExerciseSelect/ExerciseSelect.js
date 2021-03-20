@@ -28,7 +28,7 @@ function ExerciseSelect(props) {
 
   const renderOptions = () => {
    const options = exercises ? exercises.map((el, idx) => {
-    return <option key={`exO${idx}`} value={el.id}>
+    return <option key={`exO${idx}`} value={el._id}>
       { el.exercise_name }
     </option>
    }) : '';

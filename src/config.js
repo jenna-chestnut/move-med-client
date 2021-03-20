@@ -1,5 +1,5 @@
 const configVars = {
-  API_ENDPOINT: ' https://guarded-fjord-91569.herokuapp.com/api',
+  API_ENDPOINT: 'https://agile-dusk-36778.herokuapp.com/api',
   TOKEN_KEY: 'move-med-client-auth-token',
 }
 

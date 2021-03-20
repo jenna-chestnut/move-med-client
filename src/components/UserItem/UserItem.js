@@ -5,7 +5,7 @@ function UserItem(props) {
   const { u = {} } = props;
 
   const link = !u.is_admin && !u.is_provider
-  ? `/view/clients/${u.id}` : `/view/users/${u.id}`;
+  ? `/view/clients/${u._id}` : `/view/users/${u._id}`;
 
     return (
       <div className="user-item">

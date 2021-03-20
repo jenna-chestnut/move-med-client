@@ -36,13 +36,13 @@ function EditExerciseForm(props) {
 
     try {
       if (userType === 'admin') {
-        await ExercisesService.updateExercise(toSend, e.id);
+        await ExercisesService.updateExercise(toSend, e._id);
       }  
       else {
-        await ClientsService.updateClientExercise(toSend, e.id);
+        await ClientsService.updateClientExercise(toSend, e._id);
       }
-      setExc(null); setEdit(false);
-      setLoading(false);
+      await setExc(null); await setEdit(false);
+      await setLoading(false);
     }
     catch (err) {  setLoading(false); setError(err.message) }
   }

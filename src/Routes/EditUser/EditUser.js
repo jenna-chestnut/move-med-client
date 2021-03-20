@@ -31,23 +31,23 @@ function EditUser() {
 
   const handleSubmitData = async (ev, data, key, value) => {
     ev.preventDefault();
-    let newData;
+    let newData = {};
 
-    if (!data) { newData = {[key] : value } }
+    if (!data) { newData[key] = value }
     else {
       const { user_name, full_name } = ev.target;
-      newData = { 
-        user_name : user_name.value, 
-        full_name : full_name.value 
+      newData['user_name'] = user_name.value; 
+      newData['full_name'] = full_name.value; 
       };
-    }
 
     try {
       await AdminService.updateUserData(newData, userId);
-      setUser(null);
+      await setUser(null);
     } 
-    catch (err) { setError(err.error 
-      ? err.message : err.error.message) }
+    catch (err) {
+      setError(err.error 
+      ? err.message : err.error.message) 
+    }
 
   }
 

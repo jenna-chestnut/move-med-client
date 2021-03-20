@@ -4,7 +4,7 @@ import { useState} from 'react';
 function SubmitCommentForm(props) {
   const [comment_text, setText] = useState('');
   const { comment, submitComment, closeForm } = props;
-  const id = comment ? comment.id : null;
+  const id = comment ? comment._id : null;
 
   return (
   <div className='SubmitCommentForm'>

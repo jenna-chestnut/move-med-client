@@ -14,7 +14,7 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       const user = action.payload;
 
-      state.id = user.user_id;
+      state._id = user.user_id;
       state.name = user.name;
       state.user_name = user.sub;
       state.is_admin = user.is_admin;
@@ -22,7 +22,7 @@ export const userSlice = createSlice({
       state.exp = user.exp;
       },
     clearUser: state => {
-      state.id = '';
+      state._id = '';
       state.name = '';
       state.user_name = '';
       state.is_admin = false;

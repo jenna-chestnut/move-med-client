@@ -8,9 +8,13 @@ function ExerciseVidAndImg(props) {
   const { ex = {}, hide, list, clientEx } = props;
   const u = useSelector(selectUser);
 
-    const videoURL = `https://www.youtube.com/embed/${ex.videourl}`
+    const videoURL = `https://www.youtube.com/embed/${clientEx? ex.exercise.videourl : ex.videourl}`
 
-    const video = <iframe className='exc-vid' width="95%" title={ex.exercise_name} height="315" src={videoURL} frameBorder="0" margin="auto" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+    const video = <iframe className='exc-vid' width="95%" 
+    title={clientEx ? ex.exercise.exercise_name : ex.exercise_name} height="315" 
+    src={videoURL} frameBorder="0" margin="auto" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowFullScreen></iframe>
 
     const details = () => {
       if (list) {
@@ -18,9 +22,9 @@ function ExerciseVidAndImg(props) {
         ? 
         <p><b>Frequency: {ex.frequency}x every {ex.duration}</b> 
         {' | '}<Link to={`/view/exercise/client/${
-           !u.is_admin && !u.is_provider ? ex.exercise_id : ex.id}`}> Open</Link> </p>
+           !u.is_admin && !u.is_provider ? ex.exercise_id : ex._id}`}> Open</Link> </p>
         : 
-        <><Link to={`/view/exercise/admin/${ex.id}`}> Open</Link> | <Link to={`/assign-exercise/${ex.id}/unset`}> Assign</Link></> 
+        <><Link to={`/view/exercise/admin/${ex._id}`}> Open</Link> | <Link to={`/assign-exercise/${ex._id}/unset`}> Assign</Link></> 
       }
       else {
         return clientEx
@@ -41,7 +45,7 @@ function ExerciseVidAndImg(props) {
 
     <div className='group'>
       <div className='item'>
-        <img src={ex.imgurl} alt='exercise example' />
+        <img src={clientEx ? ex.exercise.imgurl : ex.imgurl} alt='exercise example' />
       </div>
 
       <div className='item video-box'>
