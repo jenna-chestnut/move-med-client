@@ -20,7 +20,7 @@ function ClientDashView() {
     return (
       <div className='ClientDashView'>
         <span className='clientdash-goal'>
-         { ex.goal ? `Goal: ${ex.goal.goal_text}` : '' }
+         { ex.goal ? `Goal: ${ex.goal}` : '' }
         </span>
         <div className='client-exercises'>
         <h2 className='exercises-header'>Your Exercises</h2> 

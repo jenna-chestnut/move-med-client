@@ -22,7 +22,7 @@ function ExerciseVidAndImg(props) {
         ? 
         <p><b>Frequency: {ex.frequency}x every {ex.duration}</b> 
         {' | '}<Link to={`/view/exercise/client/${
-           !u.is_admin && !u.is_provider ? ex.exercise_id : ex._id}`}> Open</Link> </p>
+           !u.is_admin && !u.is_provider ? ex.exercise._id : ex._id}`}> Open</Link> </p>
         : 
         <><Link to={`/view/exercise/admin/${ex._id}`}> Open</Link> | <Link to={`/assign-exercise/${ex._id}/unset`}> Assign</Link></> 
       }

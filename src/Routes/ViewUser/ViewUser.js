@@ -28,7 +28,6 @@ function ViewUser() {
           }
         else {
           const u = await ClientsService.getClient(userId);
-          console.log(u)
           setUser(u);
           setGoal(u.client.user_goal ? u.client.user_goal : 'Keep moving!');
           }

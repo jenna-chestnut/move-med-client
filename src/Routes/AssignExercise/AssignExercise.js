@@ -26,7 +26,6 @@ function AssignExercise() {
     const getData = async () => {
       try {
         if (!ex || (settingClient && !client._id)) {
-        console.log(exerciseId)
         const exercise = await ExercisesService.getExercise(exerciseId);
 
         if (clientId !== 'unset' || settingClient) {
