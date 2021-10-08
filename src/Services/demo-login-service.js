@@ -15,6 +15,8 @@ const demoLogin = async (key) => {
        TokenService.saveAuthToken(res.authToken);
        const loggedIn = TokenService.parseAuthToken();
 
+       console.log(loggedIn)
+
        return loggedIn;
     }
       catch(err) {
