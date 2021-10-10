@@ -50,6 +50,7 @@ function CommentsSection(props) {
   }
 
   const listComments = () => {
+    console.log(comments)
     return comments 
     ?
     comments.map((el, idx) => {

@@ -22,10 +22,10 @@ function Comment(props) {
   const regComment = (
   <div className='single-comment'>
   <p>{comment.comment_text}</p>
-  <span> - {comment.full_name} </span>
+  <span> - {comment.user_id.full_name} </span>
   <span className='date'>Posted {new Date(comment.date_created).toLocaleString()}</span>
   { 
-    comment.user_id === u._id &&
+    comment.user_id._id === u._id &&
     <div className='comment-buttons'>
     <button onClick={(e) => { deleteComment(e, comment._id) }}>
       Delete
