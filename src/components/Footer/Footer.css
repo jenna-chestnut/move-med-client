@@ -1,9 +1,17 @@
-footer p, footer p a {
-  color: white;
+footer {
   background-color: #004449;
+  padding-bottom: 5px;
+}
+
+footer p, footer p a, footer span {
+  color: white;
   margin: 0;
 }
 
 footer p {
   padding: 42px;
+}
+
+footer span {
+  font-size: 12px;
 }
